@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/wAARCACMAVADACIAAREBAhEB/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMAAAERAhEAPwD36iiigAooooAKKKKACiiigAooxS0AJS0lIWVRkkD60ALRURuoAcedHn/fFPSVX+6wb6HNADqKKWgBKKWkoAKKKKACiiigAopM0tABRRRQAUlRPcwRn55o1+rgUi3du33Z4j9HFAXJxS01SCMinUAFJS02gAopaKACiiigAooooAKKKKAFooooASiiigAooooAKKKKACloqpqWpWmk2Et7ezLFBEMsx/QD1J9KALDuqKWYgADJJPQVwuv/ABQ0rTWeDTlOo3C5BMbYiU+79/8AgOa4Txd42v8AxJI8EZa203PywA4aT3cjr/u9PrXJ4xWsafVmbn2Om1P4heJtTYj7f9jiP/LO0QLx6Fjkn9K52a7urpi1xd3M5PXzZ3b+ZqI8UA5rVRSM+ZjDBETzEn/fIqzbSz2rBre4ngI5HkzMn8jTAKcKdkF2dRpnj/xHprKDf/bIgeY7td3HoGGCP1rvdD+KGlagywamh06c8b3bdET/AL3b8cV432pjHNQ6aZSm0fT6yK6hkYMrDIIOQadXz/4X8aal4ZlSNCbiwz81q54A7lD/AAn26fTrXt2i67YeILBbywmDoeGU8Mjf3WHY1jKLRpGVzSoooqSgooooAQ1ka34l0rw/AJdRuljLfcjUbnf6KOTXLeNPiLHpbSado5Sa+X5ZJjykJ9P9pvboO/pXkNzc3F7cvc3U0k9xJ9+WQ5Zv8+g4q4wbIlOx6Fq3xZ1C5LJpNpHaR9pbj95If+Ajgfma5C+8Q6zqJJu9WvZM/wAIlKL+S4FZIOKdmtlBIzcmyKSJJG3SKHPq/wAx/WkWCJTkRID6hQKlIoA5qrCuXrHVtT09t1nqV5Af9mdiPyOR+ldfpHxR1mzKpqEcN/EOC2PLkH4jg/kK4UCjOKlwTGpNHv2geM9H8RAR20/l3WMtbTfLIPp2Ye4zW8SM18vlmVw6sVZTlWU4Kn1BHSvR/B/xKlikSw1+QNEcLHeEcr7Sev8Avfn61lKnbY0U7nrXelpEIdQykEEZBHenVmWJRRRQAUUtJQAUUUUALRRRQAlFFFABRRRQAUUUUANkkWKNpHYKigszE8ADvXhHjLxXJ4l1M+UxGnQMfs6f3/8Apofc9vQfWu1+KfiI2emxaLbtiW9BaYj+GIdR/wACPH0zXke6tacerMpy6CnmmkU4da7PwP4HPiOQ31+GTTI2wADgzsOoB7KO579K2bSV2ZpX2OY0fw9qviCYppto0yqcNKTtjQ+7H+Qya73T/g+7IG1LVyrd0tYhge25s5/IV6ha2sFlbR29tCkMMY2pGi4Cj2FTVi6r6GqgupwQ+EuhbMfatQ3f3vNH8sVn3vwhj2k2GsSq3ZbmIMPzXBr00UtRzyK5UfPeu+Edb0BTJeWZe3H/AC8QHeg+vdfxGPeuf3Z6dDX1GQGBBwQeK878W/DS2vxJfaIiW15yzQDiOU+391vfoe/rWkanciUOx5Biuz+G9lrUviIXOmyeTaxkLeSOCUdeuzHdvT06+xz/AA34Q1HX9YeyaGW1jt2xdySJgxf7I9WPbtjnpjPuumaZaaRp8VjZQiKCIYVR1PqSe5Pc05zVrBGLuW6Slo6Vgah2rzf4geODaeZo2lS4uMbbm4Q/6sf3VP8Ae9T2+tX/AB940/sO3/s6wkX+0p0yWHPkIf4j7nsPx7V4yWJySSSeSScknuSe9aQhfVkSlbQQjsOlNIxThzV/SdFvde1FLGwj3yEZdj92Nf7zH0/nW+xiZyo8sqRRozyOcKiKWZj6ADk12ujfDHXtQVZLvytPiPOJfnk/75HA/E16T4W8Gab4ZgzEvnXrD95dSD5j7L/dX2H410nSspVexpGHc89t/hHpaL/pOo3szd9u1B+gz+tSS/CXRGXEV5qER9fMVv5iu+zS1nzyL5UeQ6p8KNSt1aTTb2K8A6Ryjy3P49D+lcFe2lzYXLW15by286fejkXB/wDrj3HFfTdZGveH9O8QWJttQgDgcpIOHjPqp7VUajW5Lguh85daMc1reIvDl54a1Q2dz88bDdBOBgSr/QjuKyx0rdamb0PTfhn4sZJE8P30hKMD9jdj93HJj/qPoR6V6rXzFHI8UiSRuUkRgyOOqkHIP519B+FdcXxD4etr/gSkbJlH8Mi8MPpnn6GsKkbO5rCV0bNFFFZlhRRRQAUUUUALRRRQAlFFFABRRRQAUHpRUF7MLaxuJz0jjZ/yGaAPn7xhqf8Aa3i7UbkNmNJPIj/3U+X+e6sXNNDNIokc/O/zsfUnk/qaD0rqSsjnepqaDpUmua1a6bESpmf52H8CDlj+X6kV9FWdpBY2cNrbRiOCFAiIOgA6V5P8IbISapqV+wz5MSQofQsSW/QLXr1Y1XrY1gtLhRRRWZYUVR1XWLDQ7P7XqNwIINwTcQTyeg4rEPxG8Kj/AJiq/wDfp/8ACnYLnU0DpXKD4j+Ff+gsv/fp/wDClHxG8K/9BVf+/T/4UWYro6rAGeOtFcwPiH4WP/MVT/v0/wDhS/8ACwvC3/QVT/v0/wDhRZhdHTVzvi/xPB4Y0lp2AkupPkt4c/fb1PsOpqCT4i+F0jZhqW8gEhVifJ9hxXjPiLXLrxFq8l/dZUH5Yos8RJ2Ue/cnufwqowbYpSsihdXU99dy3dzKZZ5m3yOf4j/ntTAabQivJKkcaM7uwVUUZLEnAA9ya6FoYl/S9NutX1GGxso/MuJTwD0AHVj6Aev+Ne9+GvDlp4a0tbW3G6RvmmmI+aVvU+3oO1Z3gbwmnhvS984VtRuADO452+iA+g/U5rq6wqTvoawjbUTFJTqSsyxKWiigApMUtFAGD4u8PR+I9Amtdqi5QeZbuf4ZB0/A9D7Gvn9lKkhlKsCQVPUEdQfxr6ePArwLx7YrpvjO/jUYSYrcKPTeOf1BrWk9bGdRaXOcr0T4R6oYdU1DS3b5J4xcRg/3l+Vv02151mt7wRdmz8baU4OBJKYX+jKR/PFaTV0RHRn0HRQOlFcxuFFFFABRRRQAtFFFACUUUUAFFFFABWb4hJHhvUyOv2WT/wBBNaVVdSh+0aZdQYz5kLp+akUAfM38C/7o/lSGkjz5SBuoUA/XFOxXWjnPV/g6B/ZerHv9rXP/AH7WvTK8m+EF4EvtUsGOPMRJ198ZVv8A2WvWa56nxG0dgoooqCjiPisM+Dh/19RfzrxVhnvXunxG06+1TwsLfT7WS5n+0xN5ceM7QeTyR0ryr/hC/Ex/5gd3/wCOf/FVtTaSMpp3OcIPrRgjvW83gzxNnjQrz/xz/wCKpv8Awhvif/oBXn/jn/xVa3RFmY6sfWnbj61rDwb4n/6AV5/45/8AFVlzQS2s8kE8ZjmjYq6EglSOo44oTTBpobuPrTW5paTrTERk4r1b4beDPIWPxBqUREzDNpE45RT/ABkepHT0B965/wAAeDjruoDUL2P/AIlts3CsOJ5B/D/ujv69PWu88eeLl8P6eLOzYf2lcL8nGfKXoXP8gPX6VlOXRGkV1Z2S9MUted/Djxg2oRf2LqUzNeRDMEsjZMyehPdh+o59a9DzzWLTTszRO4tFFHakMM0lLRQAlLRRQAV4z8W0C+KLRh1a0GfwY4/nXs1eHfE27F34zmjU5W2hjhP+9yx/9CFXT+ImexxwrQ0JiniLS2HUXkP/AKGKz8VqeGIvtHi3R4f714h/75y3/stby2MVufR1Bo7UVynQGaKKKACiiigBaKKKAEooooAKKKKACmsMinUlAHzj4l0xtI8T6jZEEKk7PH7o/wAw/mR+FZleq/FbQC8dvrsC8xAQXGB/CT8rfgSR+NeWEV1Qd0YSVmanh3V30HX7TUlBKxNiVR1aM8MP6/UCvoi3niureOeCRZIpFDo6nIYEZBr5jBxXd+A/HS6IRpepyH+z2b91KefIJ6g/7BP5fTpFSN9UVCVtD2WkpiSpIiyIwZGGQynII9qfWBqOopM0tACHmmkAU6uU8ZeNLTw1bGFCs+ouv7uDP3c/xP6D+dCVxMp+PfGCeH7E2dm6nU7hfkxz5Kn+M/0Hc/SvEwT1JJJ5JJySfU+9S3d3caheTXd3M0txM253buf6D2qKumEeVGMpXHCtzwv4cuPEurJZxEpCuHuJh/yzT2/2j0H59qybCzuNRvYbO0jMlxM2yNPU+57DuTX0F4Y8O2/hrR0s4cNK3zzy4wZH7n6dh6AUTnZBGNyrresad4J8PRpFEg2J5VpaqcbyP6dya8Mv7651K+mvbyUy3Ezbnb+gHYDoBXvPirw1B4m0lrZyEuE+a3mx9x/8D0IrwS+s7jT7ya0u4jFcQttdD2P9R6HvUU7FTuQxzSW88c8EjRzRMHjkU4KsOhFe4+CvGMPiWx8uUrHqUKjz4h0b/bX2P6GvCic1LZXlzp17FeWczQ3ER3I69v8AEeoq5xuTGVj6cFLXI+D/ABxZ+IoVtpyttqSj5oSeJP8AaQ9x7dRXXVztWZsncKSlopDEoFLUN1dQ2dtJcXEqRQxqWd3OAoHcmgCDVtUt9G0q51C5bEUCFj6k9gPcnivnS8u5b+8nvLg5mnkaWT6k5x+HT8K6Hxv4ybxLerb2pZNMgbKAjBlf++fb0H4/Tlgc1vTjbUxnK+gGux+F+mG88YC5YZjsoWkJ/wBpvlX9N1ceMDkkAdzXuHw50I6P4aWeZCtzfHznB6quMIPy5+pqqjshQV2df04ooormNwooooAKKKKAFooooASiiigAooooAKKKKAIrq1hvbSW1uY1kgmQo6MOGB6ivn/xR4cuPDWrNaS7ngbLW8xH+sT3/ANod/wA6+hay9f0Ky8Q6Y9jepkH5kkX70bdmU+v8+lVCXKyZRufORNNIrX8ReG9Q8M33kXiboXP7m4QfJJ/g3t+WayAa6b3Mdjf8PeMtX8NARWsizWmebWbJUf7p6r+HHtXoWnfFrRZlAv7a6s5O+E81fwK8/mK8fxSbalwTGpNHvi/EPwmwBOtW6ez5U/qKguviZ4Yt0zHeSXTdlghZs/iQB+teFc56mng+9T7JFe0PQNb+KeoXitFpNuLGMjHmyEPL+A+6v15rgpneaR5ZXaSRzud3YksfUk9aZml9quMVElybI8YNCq0jqiKzMxCqqjJYnoAO5qxbWVzf3cdrZwST3En3Y4xkn39h7nivYfBXgCHQdl/qOyfUyMrjlIPZfU+rfliiUkgUbj/AHgseHrX7ffIDqc64I6+Qn9we/qfw7V3FIaBXM227myVha43x14MTxHa/arQLHqcK4RjwJV/uN/Q9j7E12VJQnYGrny7LFLbzyQTRvFNGxR43GGVh2IoAr3Txh4FtfEsZuoCtvqaLhZcfLIP7r+o9D1FeM6hpl5pN49nf27wTr/C3ceoPce4rojNMxlGxVVirKykqynIZTgg+oI6Gu30T4narpqLDqMY1GBeAxYLKB9ejfjj61w3SkJzTcU9wUmj2u0+Kfhu4AE0tzav3WWBiB+K5FXj8RfCgTcNXjb2WNyfyxXgmOaeCcdaj2SK9oz2LUfivpECEafa3V5J2LL5Sfm3P5CvNfEXinVfEkv8ApswW3U5S1i4jX6/3j7n9KyKQ01TSE5tkeKUHBoNdP4P8E3viedbiQPb6Wpy0+MGX/ZT1/wB7oO2e1t2JSuW/AXhV/EGqLdXMZ/s21YGQnpK45CD+Z/Aete444qtp9hbaZYxWVnCsUES7URew/qferVc05czNoxshMUUtJUlBRRRQAUUUUALRRRQAlFFLQAlFFFABRRRQAUhpTSUAVr2wtdRtJLW8gjngkGGjkXINeZ698JnDNPoNyCOv2W4bp/uv/jn616rgUtNSaE4pnzXqejalo7lNRsbi2x/E6ZT/AL6GR+tUFYOMqwYeoOa+omRXUqyhlPUEZBrFvPB3hy/kMlzotk7n+PygD+YrVVe5m6Z88EH0pMkV72fh14VJ/wCQSg9hI/8AjUkHgPwvbuHTRLQsOjSJvP60/aoXs2eEWdvPqEois4JbmQnG2FC5/HHT8a7fRPhfqt8Vl1N10+A8lBh5T+HRf1r1+3t4LWMRwQxxIOiooUfpU1S6rexSguplaJ4c0zw/bGHT7YIW+/K3zO/+8x5P8q1CKWjFZN3NBKDRSUAFLiigUAFZ+r6Jp2u2httRtkmTqpPDIfVSOQa0KWgDx7X/AIWahas0ujTLeQ9fJlISUfQ9G/SuBvrS60yUxahbTWjg4xOhUfgeh/A19Omo5YIp0KTRpIp6q6gj9a0VVrchwR8wqQ3III9jUgU19AT+CvDN1IXm0OxZzzuEIB/So18AeFV/5glsfqCf61ftUT7NngbMifeZV+pxWvpfhfWtZYCy06ZkP/LWRfLQf8Cb+ma92svDujacc2el2cJ9UhUH860sCpdXsNUzzvw98K7O0ZLnWpVvJRyLdBiJT792/Hj2r0KONIkCIoVVGAqjAAp9JWbk3uWkkFFJ2pQaQwoopaACkpaKAEooooAWiiigAooooAKKKKACiiigBCKMUtFACYpaKKACiiigApMUtFACYpaKKACiiigApMUtFACYpcUUUAFFFFACEZoxS0UAJt560tFFABRRRQAUYoooATFGKWigAooooAKKKKACiiigAooooA//2Q==">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GroupThat — FAQ</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #4A90E2;
+      --mint:    #4FD1C5;
+      --coral:   #FF7A6E;
+      --gray-lt: #F5F7FA;
+      --charcoal:#2D3748;
+      --white:   #ffffff;
+      --gray-mid:#6B7A8D;
+      --radius:  16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    nav img { height: 52px; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-link {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--charcoal);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { color: var(--blue); opacity: 1; }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--charcoal); transform: translateY(-1px); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 72px 48px 80px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 14px;
+    }
+    .page-header h1 span { color: var(--blue); }
+    .page-header p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.55);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── FAQ CONTENT ── */
+    .faq-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 48px 96px;
+    }
+
+    /* ── SECTION GROUP ── */
+    .faq-group {
+      margin-bottom: 56px;
+    }
+    .faq-group-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gray-lt);
+    }
+
+    /* ── ACCORDION ── */
+    .accordion { display: flex; flex-direction: column; gap: 2px; }
+
+    .accordion-item {
+      border: 1px solid #e2eaf5;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .accordion-item:hover { box-shadow: 0 4px 16px rgba(74,144,226,0.08); }
+    .accordion-item.open { box-shadow: 0 4px 20px rgba(74,144,226,0.10); border-color: #c5d8f5; }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--white);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--charcoal);
+      transition: background 0.15s;
+    }
+    .accordion-trigger:hover { background: var(--gray-lt); }
+    .accordion-item.open .accordion-trigger { background: var(--gray-lt); color: var(--blue); }
+
+    .accordion-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gray-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.25s;
+    }
+    .accordion-item.open .accordion-icon {
+      background: var(--blue);
+      transform: rotate(45deg);
+    }
+    .accordion-icon svg { display: block; }
+    .accordion-item.open .accordion-icon svg { stroke: white; }
+    .accordion-icon svg { stroke: var(--gray-mid); }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .accordion-body-inner {
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--gray-mid);
+      line-height: 1.7;
+      border-top: 1px solid #eef1f6;
+    }
+    .accordion-item.open .accordion-body { max-height: 600px; }
+
+    /* ── CTA STRIP ── */
+    .faq-cta {
+      background: var(--blue);
+      padding: 60px 48px;
+      text-align: center;
+      color: var(--white);
+    }
+    .faq-cta h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .faq-cta p { font-size: 16px; opacity: 0.8; margin-bottom: 28px; }
+    .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--charcoal);
+      padding: 13px 24px; border-radius: 12px;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(255,255,255,0.85);
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 13px 24px; border-radius: 12px;
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.7); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e2e8f2;
+      padding: 32px 48px;
+      text-align: center;
+      color: var(--gray-mid);
+      font-size: 14px;
+    }
+    footer img { height: 32px; margin: 0 auto 12px; display: block; opacity: 0.55; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .page-header { padding: 56px 24px 64px; }
+      .faq-content { padding: 56px 20px 72px; }
+      .faq-cta { padding: 48px 20px; }
+      footer { padding: 28px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/wAARCADgAYgDACIAAREBAhEB/9sAQwAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQy/9sAQwEJCQkMCwwYDQ0YMiEcITIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMAAAERAhEAPwD36iiigAooooAKKKKACiiigAooooAKKKKACiiloASiiigAooooAKKKKACiiigAooooAKKKM0AFFFGKAEpc0hooAXNFApaAEopaQ0AFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFLQAUUUUAJRRRQAUUUUAFFFFABRRRQAUUUUAFGKQnFc1rnjvQtBdoZ7rz7kdbe3G9x9ey/iaLXC509JXj+ofF7UZmI0/TLe3Ts1w5kb8hgfqaxJviL4qn66msXtDbov881ahInnR73ketHWvnweOvFQOf7cuPxjj/8Aia07L4m+JrZgZpLS6T+7JDtJ/wCBKf6UezYudHuFLXnmlfFewnKx6pZTWbcZkjPmx5/D5h+VdzYajZaparc2N1FcQt0eNsipaa3KTTLNFGaKQwooooAKKKKADNApDVW+1Ky0y2a5vrqK3gXq8rhRQBboNeear8WdPgLJpVlLeMOkkh8qPP4/Mfyrlb34neJLgnyXtLVT0EcO4j8WP9KpQbJckj2vNGfevn1/HHipmydcuB7KkYH/AKDUkPjzxVEwP9sySe0sUZH6AVXs2LnR9AUteOaf8VtagAF7aWd2vcpmFv6j+Vdpo/xH0HVGWKaV7CdjgJdDAJ9nHyn86lxaGpJnXUZpAQygqQQeQR3o71JQtFJS0AFFFFABRS0lABRRRQAUUUUAFFFLQAlLSUtABRRRQAlFFFABRRRQAUUUUAFFFFAC1Wv9QtdMspLu9nSGCMZZ2P8AnJ9qfdXMNnay3NxIsUMSl3djgKB1NeD+LfFdx4m1HflksYj/AKPCeP8AgbD+8f0HHrVRi5MmUrF/xX8Q9Q1p3ttOaSxsORlTiWUe5H3R7Dn1PauJC4GAAB14qQ80w8CuhRSMXJsSlFPtbS6v7j7PZ201zMf+WcKFiPr6fjiursvhn4nugGe3trVSOk8/zD8FB/nTbSCxyYHNOFdy/wAJ9fRcpdae59Nzr/Q1j6h4H8R6Yhkn0x5YwMl7ZhKB+A5/Slzpj5Wc/mp7DVL7SLv7Vp91JbzZ5KHhv94dG/Gq7EAkdwcEdwfQjtUZOabSZN7HtHhD4i2utSJY6kEtb88IQf3cx9j2PsfwzXd18uY7V7D8MvEmqatbzWF9DLPHbKNl6f8A0Bierd8jt198ZwtqjWMr6M9CooNFZGgUdqM4rzbx747a2aTR9ImxP924uEP+r/2VP971Pb69Gld2E3Yv+MPiHbaG72OnKl1qA4bJ/dwn/aI6n/ZH44ryDUdTvtYvDd6hcyXE3ZnPCeyjoo+lViP55pK6IwSMXK48GlJzURcLyTgepre0vwlr2sKr2mmTeWeks37pf/HuT+AqnZE2uYeKUCu7i+FGvyKDJcWER9N7N/QVHP8ACzxFCMxGxn9llKn9R/Wp54lcrOLoJ+UjtV7U9G1LR2C6lYz22TgM6/Kfow4/Ws4nBxVaMWxveHfGereG5VSGUz2WfmtZTlQP9k/wn9PavZ/DnifT/E1l9osnKyLjzYHwHiPoR/UcGvnjGat6XqV5o+oxX1jKYp4zwezDurDuD3FZyhfYqMrH0wBRWR4a8QW/iPR472DCv92aLOTG46g/zHqCK2KwaNhKKKKAFpKKKAFpKKKACiiigAooooAWikpaACiiigBKKKKACiiigAooooAKKKgvLiO0s5rmU4jiQux9gMmgDzH4p+Jd88egWz/KuJbrB6n+BP6n8K81zmnXd7LqV/cX85JluZGlbPv0H4DA/Cowa6YRsjCTuxw5rsPB3gKbxGFvrxng0wHgrw8/rtPZf9r8vWszwj4fPiTXo7Nsi1QebcsP7gP3fqx4/Ovf4YY7eFIYkVI0UKqqMAAdAKVSdtEOEb6sq6ZpFho9otrp9rHbxDsgxn3J6k+5q5jHSlornubWAUtJRQBz/iHwZo/iJGa6thHdYwt1DhZB+Pf6HNeNeJfCWo+F7nFyBLaO2IrpBhWPow/hb279vSvoXtUN3Z299aSWt1Ck0EqlXjcZDCrjNolxTPA/CvhW78Uaj5MRaK1iI+0XGPuD+6PVj+nU+/u+m6ZaaRp8VlYwiKCIYVR+pJ7k9zRpel2WjWEdjYQLDbx9FHOT3JJ5JPqat0pSbCMbBR2orl/GniyLwzpmUKvfT5W3iPr3Y/7Iz/Id6lK5RlfEDxqdIhOladJjUJV/eSD/AJYIe/8AvHt6dfr46Tz/AI0Szy3E8k88ryzSsXeRzksx6k03rXTCKSMJSuL1q3pej32t6gtlp8HmzMMnPCov95j2H+RT9J0m71rUorCyj3TSdz91F7s3sP8A61e9eHPDdl4b0xbW1Xc7fNNMw+aVvU/0Haic1EIxuY/hf4faXoKJcTqt7qAGTPIvyof9he31612A4o6UVztt7mySQtFJRSGMngiuYXhniSSNxhkdcgj3FeW+MPhmsUT3/h9GG0ZeyHII7mP0P+z+WK9VppGetNSaE1c+XVOakAr0L4m+FksLtdbs49sFy+y4VeiyHo3tnoffHrXnxrpi01cwkrM6fwN4iOgeII/MciyuiIpx2H91/wACefY+1e8A5Ge1fLzYZSrDKkYI9q988Baw2s+ELOaVt1xEDBMT1LJxn8Rg/jWVWPU0g+h0tFFFZGgUUUUAFFFFABRRRQAUUUUALRSUUALRRRQAlFFFABRRRQAUUUUAFcr8R7r7L4G1AA4M4WAc/wB9gD+ma6quF+K7EeFIV7NeR5/AE047iex4setITSnrSdxXUc57L8J9PWDw1NfsMSXk7c/7CfKP1BP4139c14BQR+BdFA72ysfqeTXS1zT3OiOwUUUVIxNwHUgfU0hkUfxD868i+LhYeINOwzAfZX4DEfxivPGaT/no/wD32f8AGtI07q5DnbQ+n/MXH3h+dKHXH3h+dfLu6T++/wD32f8AGlDuD99/++j/AI0/ZMXtD6i3L6j86Ny/3h+dfMQmf++//fZ/xpfOf++//fRo9kw9oj6M1rWbPQ9Lmv7uQCOMcKD8zseij3Jr581rV7rXdWm1C8b95IcKgPEa9lHsP1Oaqs5bqScepzUbVcKdiZSuJT7eKW5uY7eCNpZpWCRxqOWY9AKiLAKSTgDkk9q9e+G/g1tNiGtajGReTJiCJhzCh7n/AGj+g/GqlJRRKVzpPB3hSHwzpYVtr30wDXEw7nso/wBkf/X710lIKWuVu+pulYQ0UUUDCijNFACUUtAoAz9d01NY0O80+QZE8TKD6N1B/A4r5vbcCQ4w44YehHBH519QV82+IYRbeJtVgX7qXcuPxYn+ta0nqZ1FoUDXpvwfvTu1awJJAMdwoz65U/8AoIrzGu6+E7lfFk6dns2z+DL/AI1c9iIbntFFFFc5uFFFFABRRRQAUUUUAFFFFABRRRQAtFFFACUUUUAFFFFABRRRQAVw/wAVoy3g4SD/AJZ3UR/M7f613Fc/41059U8IanaxjMphLxj/AGl+YfqKa3E9j58zk0Acg0iMHUMOhGRThXWYHvHw5uFuPAumBesKGA/VGIrqq8p+E2tLFPd6LKwHmn7RBnucYdf5H869WrlmrSNou6CiiipKPH/i9JGviLTVaRVJtHIBbH8YrzwyRY/1qf8AfQr6fltrechpoI5COAXQHH51H/Z9l/z52/8A36X/AArSNSysQ4Xdz5gM0QP+tj/76FJ58P8Az2j/AO+hX08dNsSf+PO3/wC/S/4Uw6bYj/lzt/8Av0v+FV7Un2Z8zLPESAJUOenzCpq9Y+ImvWOj2R0uxgtxqNyvzMsa5hjPBPTqeg/E9q8lB4rSMuZXJkrDqQjNLXQeEfDEvibVhB8yWcOGuZRxheyj/aP6DJ9KpuyJWps/Dnwf/at2NYv4v9Bgf9yjDiaQd/8AdU/mfpXZ+NfG6eGnhtbSOO4vnId42PCR55z6E8gfn2q/4k16x8G6DGkESCXb5VparwOB+ijuf6mvC7u6nvbuW6upDLPMxeRz/EawXvu/Q1fuo+i9H1a01vS4NQs33wyrn3U91PoQeKu5rwbwX4uk8MamVmZm024I89Bz5Z/56D+o7j6c+6QTx3EKTQyLJHIoZXU5DA9CKiUeVlRlcmoooqShKKWkoAKWkpaAA8V82a5OLvxBqVyv3ZLqUg+o3ED+Ve7+LtaXQvDV3d5/fFfLhHrI3A/x/CvnwrtAXOcDGfWtaS1uZ1GM6V3XwmjL+LLh+0dm2f8AgTj/AArhjXp/wf09guq6kwwGZLdT67csf1bH4VpU2IhuepUUUVzG4UUZooAKKKKACiiigAooooAKKKKAFooooASiiigAooooAKKKKACmsu4EHoadQKAPnjxTobaD4jvLLaRCXMsB9Y2OR+RyPwrFxg17l8QPC51/SBc2qbr+0y0YHWRT95P6j3Arw8jBPUexGCK6acrowmrMmtLqexuobq2lMc8Lh43HYj+n8xXvPhTxVaeJtMEsZWO7jAFxBnlG9R6qexr5+Jqax1C80u+jvLG4aC4jPDr3HcEdwfSicOYIysfTWeaBXnGgfFWxuI0h1uM2c4GDOgLRMfX1X8ePeu7stV0/UYxJZ3tvOp6GOQNXO4tGyaZdBopAR61Sv9Z0zS4zJfX9vbqP+ekgH6Uhl6uV8Z+MLfwzZ7U2y6hKD5MOen+03oB+tc74g+Kkao9voUJkc8faplwq/wC6p5P44H1ry67nnvLmS5uZnmnkOXkc5LH/AD26CtIQb3IlKw24uJ726lurqVpZ5WLyO3Vj/n8qj6UChUeWRY40Z3dgqqoyWJ6AD1rfYyLul6bdaxqMFhZpvnmbA9FHdj7CvoPQNCtfD2kRWFqCQvMkh+9I56sawvAXhAeG9OM92FbUrgDzSORGvZB9O57muxrCpO+hrCNtTyj4oeHbpboa9G8k1uVEcqE58n0I9FPf0Neanivp6aGO4heGZFeN1KsrDIYHqDXhPjfwhN4avvOgVn0yZv3T9TGf7jf0Pfp161Tn0ZM49TlDXY+B/G8nh2UWN8Wk0t24I5NufUDuvqO3auNBpyitWrohOx9PW9xDdW8c9vKksUi7kdDkMPUGpK+f/Dni3U/DUmLVxLascvayk7D7qf4T9OPavUtI+I+gamqrPcfYLg/8s7n5Rn2boa5pQaNlJM66ioYrqCdQ0U0cinoVcEVI0scYy7qo9SQKkodUVxcRW0DzTSLHGilmdjgKB3NYOseOdA0dXWS+Sedf+WFsfMc/lwPxryPxT401LxO5hcfZrAHK2yNnd6Fz/F9On1qoxbJckiTxp4sbxNqyiAsNOtiRAp/jPeQ/XoPb61zWc1GOKeproirIxbuOCk9FLMeijqT6V9C+EtF/sDw1Z2DY84LvmI7yNy36mvNfht4YOqamNWuY82Vo/wC7BHEko/ov8/pXslZVZdDSC6hRRiisjQKKKKACiiigAooooAKKKKACiigUALRRRQAlFFFABRRRQAUUUUAFFFFABXmXxA8CPM8ms6PDukPzXNsg5f8A21Hr6jv9evptNIzTTadxNXPl4H9OKXrXtXiv4dWWuu95ZMLLUG5Zgv7uU/7Q9fcc/WvKNY8OatoEpXUbN407TL80TfRh0/HFdEZpmLi0ZZBpoQLJvCgP/eHB/OpD0z29aTNVoSPFxcdPtVzj0898flmkAXcX2jeerdz+NM6UoPNFkO7HZ5pTzScDBY4z0zXT6D4E1vXGVxbm0tT1nuFK5H+yvU/oPehtIEmzmI4JrieOC3ieWaRtscca5Zz6AV7J4G8ApoZTUtSCyakR8iDlYAfT1b1P5e+74c8H6X4aiJtozLdOMSXMuC7ew9B7Ct7GDWM6l9EaxhbcMUooo6VkWLVe9s7bULOW0u4UmglXa8bjIYVPRigDwrxd4EuvDcrXVvvuNLJyJDy0Ps/t6N+fvyuMV9POiuhR1DKRggjIIrzrxJ8LoLlnutCdLaQ8m2kP7tj/ALJ/h/UVtCp0ZnKHY8mzimscjHareqaZf6NcGDUbSW2fOB5i/K30bofzqlmtdGZ7CRqIj+7Hl/7h2/yqVmMgxIzOPR2LfzNMHNPAosguwGAuFAA9AMU0in4qW1s7m/uBb2dvLcTHgRxKWP4+n44oEVCcV0vg/wAH3nii6EnzQ6bG2JbjH3vVU9T79B9a6jw38KpJGS58QOFTqLOJsk/77f0H516nb20NpbpBbxJFFGu1EQYCj0ArOVS2xpGHcZY2dvp9lFaWkSxQQqFRFHAFWKSisDUWkoooAKKWkoAKKKKACiiigAooooAKKKWgAooooASilpKAFpKKKACilpKACilpOlAAaSjNFABihkV0KsoZTwQRkGiloA5bU/h54a1NmdrAW8rHJe1YxEn3A4P5Vz03wesi5NvrF2gPRZI0bH44Fel0VSk0Tyo8t/4U8O+uNj2th/jVq0+EOlxvm61O+nH91dsY/MDNejmkxR7SQciMXSfCGg6Mwey06FZR/wAtX+d/++mya3KbTqlu+5VgpDS0UAJRRSUAL0opKWgApaSloAguLaG6iaGeJJY2GCjqGB/A1yV/8MPDN4S8drJZv/06ylF/756fpXZE80maabWwmkebN8HrPcTFrV4o9HjRv6CnJ8ILQH95rV2R/sxIP6GvRwadmnzyFyI4yy+GHhy1ZWnjuLxh/wA95TtP/AVwK6uy06z06EQ2VrDbxD+GJAo/SrNFJtsaSQUlLSGkMSlFFJ3oAWiiloAKKSigAooooAKKKKACiiigApaKKACiiigBKKKKACiiigAooqtqN7Fpum3N7McRQRNI30AzQBg+LPGtl4ZjEIX7Tfuu5LdTjA/vMew/U15XqXxK8TXEjMt/HZx54WCJQB+LZzWWZL7xHrgLfPfX8wGCeAT0H0UfoK9p0LwVo+h2yKtrFcXOP3lzKgZmPfGeg9hWllFamd29jymw+Jvia2dXa9hvY88rNEMH23LjH616v4S8ZWXiq1by0a3vIv8AXWznJH+0p7qfX88VHr3gbRNdgbdapbXWPkuYFCsD79iPY07wh4Os/C1sxVvtF9KAJbgrjP8AsqOy/wCTSbi1oNXTOmpRXEeN/HM/hTULO3h0+O6FxE8hZ5Sm3BAxwDnrVB/itbxaLbT/AGHfqM4Ym2SXKxAEgFmx3x0xmlyvcfMj0eiuV8EeKrjxTZ3k1zaxW7wTCMLG5YEFQcnIHqaz/EfxLsdIuZLOwgN9cxkq7b9sSN6FuST9BS5Xew7q1zuqbXkifFzVUcGXSrNkz0WVlOPrg12/hjxrpnigNHBugvEG57aXG7HqD0YU3FoSkmdJQOa5zxp4ll8L6Ol9Bapcu0yxbHkKDB75APpVDwP42n8WTXsc1jFa/ZlRhslL7t2fUDHSlyu1x3V7HaUVjeJ9bfw/4fuNSjgWdoioEbNtBywHXB9a5/wf49n8TaxJYy6fHbhITLvSUtnBAxggetFna4XR3NNPFcb4x8czeF9Rt7WLT47kSxGQs0pTHOMdDWJc/FpV0uB4dNV7+TcXiMp8uPBIGWxkkjnAHFNRbC6PTQaWvILT4v36zj7bpNu8PfyJSGH0yMH9K9N0TXLHX9OS9sJd8bHDKRhkbuGHY0OLW4JpnkF78Q/EcWoXcceqRBEuJEUeUnADkAfpUP8AwsTxQRldTQj2gSvbG0rTmYs1hakk5JMK8n8q8R8fRRW/ja+ihjSOMLHhUUAD5fQVcOVu1iJXWpG/xH8UAkHVox/2xSuz0fxFqmq/DLWtRuL0teQiVY5owFK4UEYx6ZrofCGk6dceD9JllsLZ5GtkLM0Skk46k4qx4ptLe18E6xHbwxxIbWQ7Y1CjOPQUm1skNJnm3gDW9XvPGdnBdandzwskmY5JCyn5eOK9qNfPfhLVLfQ/EUOpXQcxQxyHagyWJXAA9zXT3Hxf1HziYdGthFngSTtux+C4pzi29BRlZanrmadXIeEPHVn4oZrYxG1vkXcYGbIcdyh7gd+4rp729ttOs5bu7lWKCJdzux4ArNqxadyxSHpXl2o/FmYzsul6anlA8SXLEM3/AAEdPxOan0z4rCQSR6nYpC4RjHLG5KFgOA2RkZ9eafKxcyPSc1i+K9dbw7oE2oxwLO8bIqxs20HcwHWuP8P/ABNu9a16x06XSYYBcsVLrOzFflLdNoz0xWV8RPGM11Ne+HFskWGKVN85kJZiMNwMYxzjk01B3sw5la51Pgvx1ceKNTntJtPjthHD5gZJS+ecY5AruK+dvC3iebwvqMt3DaR3DSxeWVdyuBnOcgGvZPBfiebxTpc93Pax2zRTmIKjlgRtBzyB60ThbVCjK50tJS0lQWFFFFABRRRQAUtJRQAUtJRQAtFFFACUUUUAFFFFABXM/EMsPAeq7c4MQDf7u4Z/SumqlrGnR6to93p83+ruImjPtkdaFuB4l8OtjeOrHzOyyFc/3tvH9a9s1aaS10a9uIW2yxQO6MRnBCkivnq2e+8O66krJsvrGf5lbjLDgj6EH8jXuWieMtE122XZdRRTlf3ltOwVl/A9R7itKmupnDseRf8ACyvEuFH9rRFiBx5Sc10Xgjxpr2r+Krayvr0S27pIWXylHIHHIrrfGOtaFYeHr2J57Q3E0LxxRJtZ2YjAwB9eteZ/DUf8VzZDr+7k/wDQapJNbCd0za+MAzrWk/8AXtL/AOhrUXgDwPa+ILabUNRMhtUk8uOKNiu9h1JI5wOmKs/F9c6xpP8A17S/+hLXUfC3/kTh/wBfMv8AOle0NB294XxBa2PgjwZqUmiw/ZpLhlQMGLEO2FB5PYV5r4M8Op4k1wWkrslrEnmzFThivQKD2JPf2NeqfEawlv8AwXdiFSzwMk+0DJIU5OPwzXmvw91210PxGTeSrHb3UXlGVjwrZypPt1H4iiHwt9QlukelXnw88NXFk0Eemx274ws0RIdT657/AEPWvFGe78KeJXZXxc6dcHJX+IDr+DKf19q+iLvU7Kzsnu7i6hjt1XcZGcbcfWvnbXLo6/4hv7m2Rs30+IlI5OcIvHvgfnRBt7hKy2PUvinKtx4MtJl+69zGw+hBNZHwc/4/dX/65w/zatf4mWzQ+BLSLk+TPCrfliud+E+o2tjrN7bXMyRNdRJ5W84DMpORn1waF8DB/Ed18SP+RGvf96P/ANDFcL8Kf+Rsn/69G/8AQlrr/idqVpF4TktDPH9ouHQRxhgWIDAk49ABXH/Cg/8AFWXH/Xm3/oS0or3WN/Eix8Wf+RhsP+vU/wDoVS/D7wVYazYyarqsXnxeY0cMDE7Tt4LMO/PAHtUfxa/5GCw/69T/AOhVsfC/xDZ/2Q2jTzJFcwyO8Yc48xGOePcE4/KndqGgvtDPG/w/0qLQrjUdItEtLi1QylIuFkUfeBHTOOh9q5j4XapJZ+LFs958i9jKsueN6jKn8sivRPHfiOy0nw7dQGaN7u5iaKGEMCTkYyR2Az1rzD4b2j3PjayZAdlsryufQbdo/MtRG7i7hLR6HvZ4FeC/EVsePL//AHYv/Qa95J4rwT4i/wDI+3/+7F/6DU09xz2PX/BX/IlaN/16p/Kn+MP+RO1j/r0k/lUfgnnwTo3/AF6p/KpPGH/Inav/ANekn8ql7lLY8S8NaONe8Q2mnM5SOQkyMvUKBk49+3416vqHw58OS6TLBBYJBMIzsuEJ8wNjgknr+Nee/Dj/AJHez/65y/8AoNe3zf6h/wDdP8q0qSaehEUrHzp4QuZLTxdpEqna32lUbHo3ykfTmu8+LuqyJ/Z2lIxEcm64kA/i2kBR+Zz+FefeH8f8JRpn/X7H/wCh123xftJP7Q0u9x+6MckJP+1kMB+WfyqmveQlsx3w78HWOtWcuqanF58KyGKKEkhTj7xYd+TjHTjNbvjDwDpTaJcXmlWaWt3boZAsQwsgHJBHTOOhqh8KfENmunSaLPKkVwsrSQhmx5ityce4Paur8Za9aaP4eu98sZuJomjhi3fM7EY6eg6k1Em+YpJWPIPA6g+OdHI6ecx/8hvXefErw9pUOgXmsR2MSag8sW64A+ZssFOfw4riPAq48a6Qo6CRv/RbV6b8TVLeB7rA6SxH/wAfFVJtSRMVdHnfw50XTtc1u7g1K1W4ijtw6qxPB3YzxXsek6Lp+h272+m2qW8TvvZVzy2AM8+wFeUfCu5ht/E9zHLIqNNbYjDHG4hs4Hvg17IkiSZCsrFTggHOKmo3exUErD6KKKzLCijvRQAUUUUAFFFFABS0lFAC0UUUAJRRmigAooooAKWkooA5Pxd4GtPEpF1FL9l1BV2iULlXHYOO/wBRyK8w1D4eeJrdih0xbpAeGgkVgffBwRXvlIRmqU2iXFM+f7H4ceJbmTYNMW1U9WmdVH6ZJr07wd4AtvDMn22eb7VqBUr5mNqxg9Qo/Dqa7EAUuabm2Cgked/Efwzq+vahp8um2omSKF0c+Yq4JYEdfpW74C0i90Tw0LS/iEU/nO+0MGwCeORXT0UubSw7a3EIDKVYAg8EHvXkfif4W3UV1Jc6AUlt3O77I7bWj9lJ4K+gPSvXTQBSUmtgaufPCeBPE7usX9i3C4PG4oFH/j2K9C8E/Dk6PdpqmrNFLdx8wwocpEem7Pdv0Ga9EwM9KWqdRsSgjP1nSLfXNJudOuc+VMuNy9VPUMPcHBrxfUvh34isZmiWw+2xZ+WW3IIYe6kgj6frXvNJSjJxBxueIWvw01+4sbm5mgSCVY8wwvIN8rdgx5Cj8a6D4eeEtb0LxBNd6japDC1uYwRKGOSwPQfSvT6Sm6jasHIjx/4tt/xUVh/16n/0KsnTvA2oa34cg1TTvLnZpHSS3cgEFWIBUng/Q1r/ABZt7iXxDYNDbXEoFqwJihZx97pwK6/4YJJH4KiWWKSNxcTfLIhQ/fPYgVd2oIm15Hmtv8PPEtzP5Y0zyM43STSKq/mCSa9W8H+ELbwrp7or+deTYM85GN2OigdlHOBXS0Vm5t6FKKQ0jivJPGngvXtW8W3d9Z2ayW8gQK3mqOi4PBr12jApKVhtXMnwvZT6b4Y02yulCzwW6pIoOcED1p/iOzn1Dw3qNnbKHnnt3RFJwCSOOa06KV9bhY8r8FeDdd0jxRb3t9aLFbojhm81TyRgcCvUZQWiYDqQQKfRTlK4JWPEdG+H/iS28QWVzPYokMV0sjt5ynChs5r1nX9BtPEWkTafdhgj4KyL96Nh0Ye4rV49KSm5NglY8F1L4c+I7C4KR2Qvoc/LLbkc+5UkEH86u6R8N9dv3eS8t/sUaoT+9YGRzjhQATjnua9uxzS1XtGTyI8h8J+CvEOmeKNOvbyyWOCF2aRhMpxlGHQdeTXqGsaXDrOkXOnXBIjnQoSvVT2I9wcGr1FTKTepSVjwbUvh54lsrkxx2JvEB+Wa3YYPvgkFT+f1rufhnoGsaHFqB1K3WCO5ZHRS4aTcAQSccdMd6784NFNzbVhKNncKKKKgoKKKKACiiigAooooAKBRQKAFooooASiiigAooooAKKKKACiikoAWiiigAooooAKKKSgBaKKKACiiigApKU0lACHrSijFGKAFoopaAEopaSgAooooAKKSloATPNLRijFABRRiigAooooAKKKKACiiigAooooAKKKKACiiigAoHWigUALRRRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAlFLRQAneilooASilooASilooASilooATvRS0UAJRS0UAJRS0UAJRS0UAJiilooASilooASilooASilooASilooASilooASilooASilooASilooASjvS0UAFFFFAH//2Q==" alt="GroupThat"></a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="faq.html" class="nav-link active">FAQs</a>
+    <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="nav-cta">Get the App</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>Frequently Asked <span>Questions</span></h1>
+  <p>Everything you need to know about GroupThat.</p>
+</div>
+
+<!-- FAQ CONTENT -->
+<div class="faq-content">
+
+  <!-- Getting Started -->
+  <div class="faq-group">
+    <div class="faq-group-title">Getting Started</div>
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          What is GroupThat?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Set up your recurring group once, and GroupThat handles the rest — invites, RSVPs, reminders, and all the back-and-forth you'd rather not deal with.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Who is GroupThat for?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">If you're the one texting the group chat "who's in this week?" every single week — this is for you. Sports, game nights, book clubs, running crews, leadership meetups, you name it.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Do I need an account to join a meetup?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Yes — everyone needs a GroupThat account, organizers and participants alike. The one exception: if someone already in a meetup taps the "+" next to their "I'm In" button to bring a guest, that guest can join without signing up.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Is GroupThat free?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Free for organizers with up to a few meetups. Go Pro for bigger groups and extra features like unlimited groups, unlimited guests, and premium perks.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Setting Up a Group -->
+  <div class="faq-group">
+    <div class="faq-group-title">Setting Up a Group</div>
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Can I schedule a one-time event?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">GroupThat is built for groups that meet regularly — every meetup belongs to a group. If it's a one-time thing, it might not be the right fit. But if you've got people you meet with more than once, you're in the right place.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          How do I create a group?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Tap the "New Group" plus button, fill in the basics (name, location, time, frequency), add your members, and you're done. Seriously, that's it.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          What recurring schedules can I set?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Weekly, biweekly, monthly, or custom intervals — pick your day, set your time, and it just keeps going.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Can I run more than one group?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Absolutely. Create as many as you need, each with its own member list, schedule, and settings.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Can I edit a group after it's live?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Anytime. Change the time, location, or member list, and choose to update just the next occurrence or all future meetups.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          What if the location changes week to week?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Update it for that specific occurrence — your default stays untouched, and members get notified automatically.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Inviting Members -->
+  <div class="faq-group">
+    <div class="faq-group-title">Inviting Members</div>
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          How do I invite people?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Add members by phone number or email when setting up your group. They'll get an invite right away — no chasing required.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Can members bring others?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Your call. Enable a shareable link so members can bring friends, or keep it invite-only.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Is there a member limit?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">The free plan includes a limited number of members per group. Pro removes those limits entirely — unlimited groups and unlimited guests.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          How do we stay connected beyond the meetup?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Each group has a dedicated chat where all members can post information, pictures, and pre/post meetup conversation and banter.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RSVPs & Attendance -->
+  <div class="faq-group">
+    <div class="faq-group-title">RSVPs &amp; Attendance</div>
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          How does RSVPing work?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Before each meetup, GroupThat automatically messages everyone asking if they're in or out. Members respond directly — quick and painless.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          When do RSVP messages go out?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">You set the timing. Send the first nudge a few days out, and add a follow-up for anyone who hasn't responded yet.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          What if someone doesn't RSVP?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Send them an automatic follow-up, or set a deadline after which they're marked "out." You decide what fits your group.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          What happens when someone clicks "I'm Out"?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">They're automatically muted from meetup messages until the next cycle — no noise, no guilt.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Can members change their RSVP?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Yes, right up until the meetup. You'll see the update in real time on your dashboard.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Can I see a headcount before the meetup?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Yep — your dashboard shows exactly who's in, who's out, and who's still ghosting you.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Messaging & Notifications -->
+  <div class="faq-group">
+    <div class="faq-group-title">Messaging &amp; Notifications</div>
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          What does GroupThat send automatically?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Invites, RSVP requests, reminders, change alerts, and post-meetup wrap-ups (Pro). You control which ones fire and when.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Can I customize the messages?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Yes. Edit the default templates to sound like you — casual, formal, or somewhere in between.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Navigating the App -->
+  <div class="faq-group">
+    <div class="faq-group-title">Navigating the App</div>
+    <div class="accordion">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          What are the three tabs in GroupThat?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Simple and clean — just three pages: <strong>Home</strong> — all your upcoming meetup invitations in one place. <strong>Groups</strong> — every group you're part of, with access to each group's chat and settings. <strong>Profile</strong> — add your photo and keep your personal info up to date.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          How do I chat with my group?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">Head to the "Groups" tab, find your group, and tap into the chat. Each group has its own conversation separate from the RSVP flow.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          How do I manage a group I created?
+          <div class="accordion-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">From the Groups tab, tap the group you administer — you'll see options to edit details, manage members, and adjust the meetup schedule.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /faq-content -->
+
+<!-- CTA STRIP -->
+<div class="faq-cta">
+  <h2>Ready to stop chasing people?</h2>
+  <p>Download GroupThat and let it handle the rest.</p>
+  <div class="btn-row">
+    <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-white">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      App Store
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.dallinhull.groupthat&pli=1" class="btn-ghost">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l12.71-7.34-2.89-2.89L3.18 23.76zM.47 1.31C.17 1.63 0 2.12 0 2.74v18.51c0 .62.17 1.11.48 1.43l.08.07 10.37-10.37v-.24L.55 1.24l-.08.07zm19.44 7.97L17 7.65 14.07 10.6l2.93 2.93 2.93-1.64c.83-.47.83-1.24-.02-1.61zM4.17.24L16.88 7.58l-2.89 2.89L4.17.24z"/></svg>
+      Google Play
+    </a>
+  </div>
+</div>
+
+<footer>
+  <img src="data:image/png;base64,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" alt="GroupThat">
+  <p>&copy; 2026 GroupThat. All rights reserved.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.accordion-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.accordion-item');
+      const isOpen = item.classList.contains('open');
+      // Close all in the same accordion
+      item.closest('.accordion').querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

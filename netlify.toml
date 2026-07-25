@@ -1,0 +1,6 @@
+# Netlify configuration for groupthatapp.com
+# Plain static site: no build step, just publish the HTML files as-is.
+
+[build]
+  publish = "."     # serve the files in the root of this repo
+  command = ""      # nothing to build
