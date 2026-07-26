@@ -10,7 +10,9 @@ automatically whenever a change is pushed here.
 | `index.html`       | Homepage (Stop Chasing People)      |
 | `faq.html`         | FAQ                                 |
 | `blog/index.html`  | Blog landing page (lists all posts) |
-| `blog/welcome.html`| First blog post (use as a template) |
+| `blog/welcome.html`| Intro post — GroupThat as a recurring meetup organizer (use as a template) |
+| `blog/vs-group-chat.html`   | Organizer-first vs. chat-first |
+| `blog/whos-in-whos-out.html`| Live headcounts, guests, and mute-until-next-meetup |
 
 Each page is fully self-contained; the pages link to each other by filename.
 
