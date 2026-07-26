@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../GT%202.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Always know who's in, who's out — and who they're bringing — GroupThat</title>
+  <meta name="description" content="The organizer superpower: a live in/out list for every meetup, guest counts included, plus mute-until-next-meetup so members only hear from you when it matters.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #4A90E2;
+      --mint:    #4FD1C5;
+      --coral:   #FF7A6E;
+      --gray-lt: #F5F7FA;
+      --charcoal:#2D3748;
+      --white:   #ffffff;
+      --gray-mid:#6B7A8D;
+      --radius:  16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    nav img { height: 52px; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: var(--charcoal); text-decoration: none; opacity: 0.6; transition: opacity 0.15s; }
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { opacity: 1; color: var(--blue); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--charcoal); transform: translateY(-1px); }
+
+    /* ── ARTICLE ── */
+    .article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 88px;
+    }
+    .back-link {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-mid);
+      text-decoration: none;
+      margin-bottom: 28px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--blue); }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--gray-mid);
+      margin-bottom: 18px;
+    }
+    .post-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(74,144,226,0.10);
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+    .article h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      line-height: 1.12;
+      margin-bottom: 32px;
+    }
+
+    /* Long-form typography */
+    .article-body { font-size: 18px; line-height: 1.75; color: #3a4658; }
+    .article-body > p { margin-bottom: 24px; }
+    .article-body .lead { font-size: 21px; line-height: 1.6; color: var(--charcoal); font-weight: 500; }
+    .article-body h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--charcoal);
+      margin: 44px 0 14px;
+    }
+    .article-body h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin: 32px 0 10px;
+    }
+    .article-body ul, .article-body ol { margin: 0 0 24px 26px; }
+    .article-body li { margin-bottom: 10px; }
+    .article-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .article-body strong { color: var(--charcoal); font-weight: 700; }
+    .article-body blockquote {
+      border-left: 3px solid var(--mint);
+      background: var(--gray-lt);
+      padding: 18px 24px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 0 0 24px;
+      font-size: 19px;
+      color: var(--charcoal);
+    }
+    .article-body hr { border: none; border-top: 1px solid #e2e8f2; margin: 44px 0; }
+
+    /* End-of-post CTA */
+    .post-cta {
+      max-width: 680px;
+      margin: 0 auto 88px;
+      padding: 36px 40px;
+      background: var(--gray-lt);
+      border: 1px solid #e2eaf5;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .post-cta h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .post-cta p { color: var(--gray-mid); margin-bottom: 22px; }
+    .btn-blue {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 13px 30px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-blue:hover { background: var(--charcoal); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e2e8f2;
+      padding: 32px 48px;
+      text-align: center;
+      color: var(--gray-mid);
+      font-size: 14px;
+    }
+    footer img { height: 32px; margin: 0 auto 12px; display: block; opacity: 0.55; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav img { height: 42px; }
+      .article { padding: 40px 24px 64px; }
+      .article-body { font-size: 17px; }
+      .post-cta { margin: 0 24px 64px; padding: 30px 26px; }
+      footer { padding: 28px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html"><img src="../GT%202.png" alt="GroupThat"></a>
+  <div class="nav-right">
+    <a href="../faq.html" class="nav-link">FAQs</a>
+    <a href="index.html" class="nav-link active">Blog</a>
+    <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="nav-cta">Get the App</a>
+  </div>
+</nav>
+
+<!-- ARTICLE -->
+<article class="article">
+  <a href="index.html" class="back-link">← All posts</a>
+
+  <div class="article-meta">
+    <span class="post-tag">For Organizers</span>
+    <span>July 26, 2026</span>
+    <span>·</span>
+    <span>4 min read</span>
+  </div>
+
+  <h1>Always know who&rsquo;s in, who&rsquo;s out &mdash; and who they&rsquo;re bringing</h1>
+
+  <div class="article-body">
+    <p class="lead">Ask any organizer what they actually want, and it&rsquo;s not a fancier chat. It&rsquo;s a straight answer to one question: how many people are showing up this time?</p>
+
+    <p>That number decides everything. How many courts to book. Whether to grab the big table or the small one. How much food to order. Whether tonight is even worth running. And in a group chat, that number is the single hardest thing to pin down.</p>
+
+    <p>GroupThat gives it to you at a glance &mdash; and then goes one better.</p>
+
+    <h2>A live in / out list, every time</h2>
+
+    <p>Every meetup has one screen that answers the whole question. A running count of who&rsquo;s <strong>in</strong>, who&rsquo;s <strong>out</strong>, and exactly which names are on each side. It updates the instant someone taps, so you&rsquo;re never tallying replies or re-asking people who already answered.</p>
+
+    <p>No detective work. No &ldquo;wait, did Sara say she was coming?&rdquo; You open the app and you know.</p>
+
+    <blockquote>The best part isn&rsquo;t the reminder that goes out automatically. It&rsquo;s never having to wonder who&rsquo;s actually coming.</blockquote>
+
+    <h2>It counts the guests, too</h2>
+
+    <p>Here&rsquo;s the number that quietly wrecks a headcount: the plus-ones. Someone&rsquo;s bringing a roommate. Two people are bringing their partners. A regular is introducing a friend who might join the group. In a chat, those extras get mentioned once and then forgotten &mdash; and suddenly you&rsquo;re four short on chairs.</p>
+
+    <p>GroupThat folds guests right into the count. When a member is bringing someone, it shows up in the total, so the number you&rsquo;re planning around is the <em>real</em> number walking through the door &mdash; not just the members who tapped &ldquo;in.&rdquo;</p>
+
+    <h3>Why organizers love it</h3>
+
+    <ul>
+      <li><strong>Book the right amount.</strong> Courts, tables, tickets, pizzas &mdash; size them to reality, including guests.</li>
+      <li><strong>No surprises at the door.</strong> The count you saw this morning is the count that shows up.</li>
+      <li><strong>Spot your regulars and your newcomers.</strong> Guests today are often members next month.</li>
+    </ul>
+
+    <h2>Mute until the next meetup</h2>
+
+    <p>Visibility cuts the other way, too &mdash; toward the members. Not everyone makes it every week, and there&rsquo;s nothing more annoying than a group blowing up your phone about a night you already said you&rsquo;re skipping.</p>
+
+    <p>When someone&rsquo;s out, GroupThat lets them <strong>mute until the next meetup</strong>. The chatter for this round goes quiet, and they rejoin automatically when the next invite comes around &mdash; no un-muting to remember, no risk of missing the plan next time.</p>
+
+    <p>For organizers, that&rsquo;s a gift in disguise: people stay in the group instead of leaving over notification fatigue. The ones who are in get the logistics. The ones who are out get peace and quiet. Everybody comes back next week.</p>
+
+    <blockquote>Only the right people get pinged &mdash; so nobody mutes the whole group forever and misses the plans that matter.</blockquote>
+
+    <h2>The takeaway</h2>
+
+    <p>Running a recurring group is really an information problem: who&rsquo;s coming, how many total, and who needs to hear what. GroupThat is built to answer exactly that &mdash; a live in/out count with guests included, and a mute that respects everyone&rsquo;s attention.</p>
+
+    <hr>
+
+    <p>Know your number. Bring the right amount. Keep the group happy. That&rsquo;s the whole job &mdash; and it&rsquo;s the job GroupThat is built to do.</p>
+  </div>
+</article>
+
+<!-- END CTA -->
+<div class="post-cta">
+  <h3>Know exactly who&rsquo;s coming.</h3>
+  <p>Live headcounts, guests included, with mute-until-next-meetup built in.</p>
+  <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-blue">Get the App</a>
+</div>
+
+<footer>
+  <img src="../GT%202.png" alt="GroupThat">
+  <p>&copy; 2026 GroupThat. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

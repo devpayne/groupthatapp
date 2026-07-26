@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../GT%202.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organizer-first vs. chat-first: GroupThat and the group chat — GroupThat</title>
+  <meta name="description" content="Apps like GroupMe are chat-first, with meetups bolted on as an afterthought. GroupThat flips it: the recurring meetup comes first, and the chat serves it.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #4A90E2;
+      --mint:    #4FD1C5;
+      --coral:   #FF7A6E;
+      --gray-lt: #F5F7FA;
+      --charcoal:#2D3748;
+      --white:   #ffffff;
+      --gray-mid:#6B7A8D;
+      --radius:  16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    nav img { height: 52px; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: var(--charcoal); text-decoration: none; opacity: 0.6; transition: opacity 0.15s; }
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { opacity: 1; color: var(--blue); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--charcoal); transform: translateY(-1px); }
+
+    /* ── ARTICLE ── */
+    .article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 88px;
+    }
+    .back-link {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-mid);
+      text-decoration: none;
+      margin-bottom: 28px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--blue); }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--gray-mid);
+      margin-bottom: 18px;
+    }
+    .post-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(74,144,226,0.10);
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+    .article h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      line-height: 1.12;
+      margin-bottom: 32px;
+    }
+
+    /* Long-form typography */
+    .article-body { font-size: 18px; line-height: 1.75; color: #3a4658; }
+    .article-body > p { margin-bottom: 24px; }
+    .article-body .lead { font-size: 21px; line-height: 1.6; color: var(--charcoal); font-weight: 500; }
+    .article-body h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--charcoal);
+      margin: 44px 0 14px;
+    }
+    .article-body h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin: 32px 0 10px;
+    }
+    .article-body ul, .article-body ol { margin: 0 0 24px 26px; }
+    .article-body li { margin-bottom: 10px; }
+    .article-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .article-body strong { color: var(--charcoal); font-weight: 700; }
+    .article-body blockquote {
+      border-left: 3px solid var(--mint);
+      background: var(--gray-lt);
+      padding: 18px 24px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 0 0 24px;
+      font-size: 19px;
+      color: var(--charcoal);
+    }
+    .article-body hr { border: none; border-top: 1px solid #e2e8f2; margin: 44px 0; }
+
+    /* Comparison table */
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 28px;
+      font-size: 16px;
+    }
+    .compare th, .compare td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid #e2e8f2;
+      vertical-align: top;
+    }
+    .compare thead th {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .compare thead th:nth-child(2) { color: var(--blue); }
+    .compare tbody td:first-child { color: var(--gray-mid); font-weight: 600; }
+    .compare-wrap { overflow-x: auto; }
+
+    /* End-of-post CTA */
+    .post-cta {
+      max-width: 680px;
+      margin: 0 auto 88px;
+      padding: 36px 40px;
+      background: var(--gray-lt);
+      border: 1px solid #e2eaf5;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .post-cta h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .post-cta p { color: var(--gray-mid); margin-bottom: 22px; }
+    .btn-blue {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 13px 30px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-blue:hover { background: var(--charcoal); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e2e8f2;
+      padding: 32px 48px;
+      text-align: center;
+      color: var(--gray-mid);
+      font-size: 14px;
+    }
+    footer img { height: 32px; margin: 0 auto 12px; display: block; opacity: 0.55; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav img { height: 42px; }
+      .article { padding: 40px 24px 64px; }
+      .article-body { font-size: 17px; }
+      .post-cta { margin: 0 24px 64px; padding: 30px 26px; }
+      footer { padding: 28px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html"><img src="../GT%202.png" alt="GroupThat"></a>
+  <div class="nav-right">
+    <a href="../faq.html" class="nav-link">FAQs</a>
+    <a href="index.html" class="nav-link active">Blog</a>
+    <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="nav-cta">Get the App</a>
+  </div>
+</nav>
+
+<!-- ARTICLE -->
+<article class="article">
+  <a href="index.html" class="back-link">← All posts</a>
+
+  <div class="article-meta">
+    <span class="post-tag">Perspective</span>
+    <span>July 26, 2026</span>
+    <span>·</span>
+    <span>4 min read</span>
+  </div>
+
+  <h1>Organizer-first vs. chat-first: where GroupThat and the group chat part ways</h1>
+
+  <div class="article-body">
+    <p class="lead">Group messaging apps and GroupThat can look like they do the same job. They don&rsquo;t. The difference comes down to one question: what is the app actually built around?</p>
+
+    <p>Apps like GroupMe are <strong>chat-first</strong>. The message thread is the product. Everything else &mdash; polls, events, the occasional &ldquo;who&rsquo;s coming?&rdquo; &mdash; is bolted on around the conversation. Organizing a recurring meetup is possible, but it&rsquo;s a secondary use of a tool designed for talking.</p>
+
+    <p>GroupThat is <strong>organizer-first</strong>. The recurring meetup is the product. The chat exists to serve the meetup, not the other way around.</p>
+
+    <h2>Why the difference matters</h2>
+
+    <p>In a chat-first app, your headcount lives inside the conversation. That means it&rsquo;s buried the moment anyone says anything else. A &ldquo;yes I&rsquo;m in&rdquo; from Tuesday is three days and forty messages ago by the time Thursday arrives. To know who&rsquo;s actually coming, someone has to scroll, tally, and re-ask.</p>
+
+    <p>In an organizer-first app, the headcount <em>is</em> the screen. Who&rsquo;s in, who&rsquo;s out, and how many to expect are the first thing you see &mdash; not something you reconstruct from a thread.</p>
+
+    <blockquote>Chat-first apps make you dig through the conversation to find the plan. Organizer-first apps put the plan front and center and keep the conversation out of its way.</blockquote>
+
+    <h2>Side by side</h2>
+
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th></th>
+            <th>GroupThat</th>
+            <th>Chat-first apps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Built around</td>
+            <td>The recurring meetup</td>
+            <td>The message thread</td>
+          </tr>
+          <tr>
+            <td>Weekly headcount</td>
+            <td>Automatic &mdash; invites go out on a schedule</td>
+            <td>Someone re-posts &ldquo;who&rsquo;s in?&rdquo; each time</td>
+          </tr>
+          <tr>
+            <td>Seeing who&rsquo;s coming</td>
+            <td>A live in / out list, always visible</td>
+            <td>Scroll the thread and tally replies</td>
+          </tr>
+          <tr>
+            <td>Notifications</td>
+            <td>Only the people who are in get the logistics</td>
+            <td>Everyone gets pinged for everything</td>
+          </tr>
+          <tr>
+            <td>When you&rsquo;re out</td>
+            <td>Mute until the next meetup</td>
+            <td>Keep getting notified anyway</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Not a replacement for chatting &mdash; a replacement for chasing</h2>
+
+    <p>None of this is a knock on group chats. They&rsquo;re great for talking. But talking was never the hard part of running a weekly pickleball night or a monthly book club. The hard part is the logistics: the invite, the headcount, the reminders, and keeping the right people in the loop without spamming everyone else.</p>
+
+    <p>That&rsquo;s the part GroupThat is built for &mdash; because it&rsquo;s the part a chat app was never built for.</p>
+
+    <hr>
+
+    <p>If you&rsquo;ve been running a recurring group out of a chat thread and feeling the friction, that friction isn&rsquo;t you. It&rsquo;s the tool.</p>
+  </div>
+</article>
+
+<!-- END CTA -->
+<div class="post-cta">
+  <h3>Put the meetup first.</h3>
+  <p>Let GroupThat handle the invites, the headcount, and the reminders.</p>
+  <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-blue">Get the App</a>
+</div>
+
+<footer>
+  <img src="../GT%202.png" alt="GroupThat">
+  <p>&copy; 2026 GroupThat. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../GT%202.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — GroupThat</title>
+  <meta name="description" content="Playbooks, product updates, and ideas from the GroupThat team on running recurring meetups without chasing people for a headcount.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #4A90E2;
+      --mint:    #4FD1C5;
+      --coral:   #FF7A6E;
+      --gray-lt: #F5F7FA;
+      --charcoal:#2D3748;
+      --white:   #ffffff;
+      --gray-mid:#6B7A8D;
+      --radius:  16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    nav img { height: 52px; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: var(--charcoal); text-decoration: none; opacity: 0.6; transition: opacity 0.15s; }
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { opacity: 1; color: var(--blue); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--charcoal); transform: translateY(-1px); }
+
+    /* ── BLOG HEADER ── */
+    .blog-head {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 12px;
+      text-align: center;
+    }
+    .blog-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 14px;
+    }
+    .blog-head h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .blog-head p {
+      font-size: 18px;
+      color: var(--gray-mid);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── POST LIST ── */
+    .post-list {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+      display: grid;
+      gap: 20px;
+    }
+    .post-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid #e2eaf5;
+      border-radius: var(--radius);
+      padding: 30px 34px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(74,144,226,0.10);
+      border-color: #cfdcf1;
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--gray-mid);
+      margin-bottom: 12px;
+    }
+    .post-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(74,144,226,0.10);
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+    .post-card h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .post-card p { font-size: 16px; color: var(--gray-mid); line-height: 1.6; }
+    .post-more {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .blog-empty {
+      text-align: center;
+      color: var(--gray-mid);
+      font-size: 16px;
+      padding: 40px 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e2e8f2;
+      padding: 32px 48px;
+      text-align: center;
+      color: var(--gray-mid);
+      font-size: 14px;
+    }
+    footer img { height: 32px; margin: 0 auto 12px; display: block; opacity: 0.55; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav img { height: 42px; }
+      .post-card { padding: 26px 24px; }
+      footer { padding: 28px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html"><img src="../GT%202.png" alt="GroupThat"></a>
+  <div class="nav-right">
+    <a href="../faq.html" class="nav-link">FAQs</a>
+    <a href="index.html" class="nav-link active">Blog</a>
+    <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="nav-cta">Get the App</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="blog-head">
+  <div class="blog-eyebrow">The GroupThat Blog</div>
+  <h1>Run the meetup, not the group chat.</h1>
+  <p>Playbooks, product updates, and ideas for organizing recurring meetups &mdash; without chasing anyone for a headcount.</p>
+</header>
+
+<!-- POST LIST -->
+<!--
+  To add a new post: duplicate blog/welcome.html, rename it (e.g. blog/my-post.html),
+  write your article, then copy one <a class="post-card"> block below and point its
+  href at your new file. Newest posts go at the top.
+-->
+<main class="post-list">
+
+  <a class="post-card" href="whos-in-whos-out.html">
+    <div class="post-meta">
+      <span class="post-tag">For Organizers</span>
+      <span>July 26, 2026</span>
+      <span>·</span>
+      <span>4 min read</span>
+    </div>
+    <h2>Always know who&rsquo;s in, who&rsquo;s out — and who they&rsquo;re bringing</h2>
+    <p>A live in/out list for every meetup, guest counts included, plus mute-until-next-meetup so members only hear from you when it matters.</p>
+    <span class="post-more">Read more →</span>
+  </a>
+
+  <a class="post-card" href="vs-group-chat.html">
+    <div class="post-meta">
+      <span class="post-tag">Perspective</span>
+      <span>July 26, 2026</span>
+      <span>·</span>
+      <span>4 min read</span>
+    </div>
+    <h2>Organizer-first vs. chat-first: where GroupThat and the group chat part ways</h2>
+    <p>Apps like GroupMe are chat-first, with meetups bolted on. GroupThat flips it — the recurring meetup comes first, and the chat serves it.</p>
+    <span class="post-more">Read more →</span>
+  </a>
+
+  <a class="post-card" href="welcome.html">
+    <div class="post-meta">
+      <span class="post-tag">Announcements</span>
+      <span>July 26, 2026</span>
+      <span>·</span>
+      <span>2 min read</span>
+    </div>
+    <h2>GroupThat is a recurring meetup organizer, not another group chat</h2>
+    <p>Why we built GroupThat for the groups that meet again and again — pickleball nights, book clubs, weekly runs — and what to expect from this blog.</p>
+    <span class="post-more">Read more →</span>
+  </a>
+
+</main>
+
+<footer>
+  <img src="../GT%202.png" alt="GroupThat">
+  <p>&copy; 2026 GroupThat. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
