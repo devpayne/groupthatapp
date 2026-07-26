@@ -9,6 +9,7 @@ automatically whenever a change is pushed here.
 |--------------|-------------------------------------|
 | `index.html` | Homepage (Stop Chasing People)      |
 | `faq.html`   | FAQ                                 |
+| `assets/`    | Background videos + posters and the social-share (Open Graph) image |
 
 Each page is fully self-contained; the pages link to each other by filename.
 
