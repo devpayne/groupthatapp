@@ -71,6 +71,8 @@
       text-decoration: none;
       opacity: 0.7;
       transition: opacity 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .nav-link:hover { opacity: 1; }
     .nav-link.active { color: var(--blue); opacity: 1; }
@@ -83,6 +85,8 @@
       font-weight: 600;
       text-decoration: none;
       transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
     .nav-cta:hover { background: var(--charcoal); transform: translateY(-1px); }
 
@@ -243,6 +247,8 @@
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
+      nav img { height: 42px; }
+      .nav-link { display: none; }
       .page-header { padding: 56px 24px 64px; }
       .faq-content { padding: 56px 20px 72px; }
       .faq-cta { padding: 48px 20px; }
