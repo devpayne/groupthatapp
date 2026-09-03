@@ -9,6 +9,7 @@ automatically whenever a change is pushed here.
 |------------------------------|-------------------------------------|
 | `index.html`                 | Homepage (Stop Chasing People)      |
 | `faq.html`                   | FAQ                                 |
+| `contact.html`                | Contact Us (info@groupthatapp.com)  |
 | `blog/index.html`            | Blog landing page (lists all posts) |
 | `blog/welcome.html`          | Intro post — GroupThat as a recurring meetup organizer (use as a template) |
 | `blog/vs-group-chat.html`    | Organizer-first vs. chat-first |
