@@ -286,7 +286,12 @@
       padding-left: 44px;
       align-self: start;
     }
-    .phone-wrap { align-self: start; }
+    .phone-wrap {
+      align-self: start;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(45,55,72,0.2);
+    }
     .screen-num {
       width: 32px; height: 32px;
       border-radius: 50%;
@@ -303,7 +308,11 @@
       color: var(--charcoal);
     }
     /* Phone SVG wrapper */
-    .phone-wrap svg { width: 100%; height: auto; display: block; }
+    .phone-wrap img {
+      width: 100%; height: auto; display: block;
+      -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+    }
 
     /* ── FEATURES ── */
     .features {
@@ -537,48 +546,9 @@
         <div class="screen-num" style="background:#4A90E2;">1</div>
         <div class="screen-title">Auto Invites</div>
       </div>
-      <p class="screen-desc">Weekly invites go out automatically. No more copy-pasting in chat.</p>
+      <p class="screen-desc">Set your schedule once. GroupThat sends the invites automatically, every time.</p>
       <div class="phone-wrap">
-        <svg viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 16px 40px rgba(45,55,72,0.2))">
-          <!-- Phone body -->
-          <rect x="2" y="2" width="236" height="416" rx="28" fill="#2D3748"/>
-          <rect x="8" y="8" width="224" height="404" rx="22" fill="#F5F7FA"/>
-          <!-- Notch -->
-          <rect x="82" y="12" width="76" height="16" rx="8" fill="#2D3748"/>
-          <!-- Status bar -->
-          <text x="18" y="38" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#2D3748">9:41</text>
-          <text x="210" y="38" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#2D3748" text-anchor="end">●●●</text>
-          <!-- Notification toast -->
-          <rect x="14" y="48" width="212" height="52" rx="12" fill="#4A90E2"/>
-          <text x="44" y="68" font-family="Inter,sans-serif" font-size="9" font-weight="800" fill="white">GroupThat</text>
-          <text x="44" y="82" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.85)">Weekly invite sent automatically</text>
-          <rect x="22" y="66" width="16" height="12" rx="2" fill="rgba(255,255,255,0.9)"/><polyline points="22,66 30,73 38,66" fill="none" stroke="#4A90E2" stroke-width="1.5"/>
-          <!-- Screen title -->
-          <text x="18" y="124" font-family="Poppins,Inter,sans-serif" font-size="14" font-weight="800" fill="#4A90E2">Are you coming?</text>
-          <!-- Event card -->
-          <rect x="14" y="134" width="212" height="120" rx="14" fill="white" style="filter:drop-shadow(0 2px 8px rgba(45,55,72,0.07))"/>
-          <text x="28" y="158" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#4FD1C5">Pickleball night</text>
-          <text x="28" y="173" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D">Thursday, May 7 · 6:30 PM</text>
-          <!-- In/Out row -->
-          <circle cx="36" cy="195" r="5" fill="#48bb78"/>
-          <text x="44" y="199" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#48bb78">0</text>
-          <text x="56" y="199" font-family="Inter,sans-serif" font-size="11" fill="#2D3748">In</text>
-          <circle cx="82" cy="195" r="5" fill="#FF7A6E"/>
-          <text x="90" y="199" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#2D3748">0 Out</text>
-          <!-- Buttons -->
-          <rect x="28" y="210" width="86" height="32" rx="10" fill="#4FD1C5"/>
-          <text x="71" y="231" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="white" text-anchor="middle">✓ I'm In</text>
-          <rect x="120" y="210" width="86" height="32" rx="10" fill="#FF7A6E"/>
-          <text x="163" y="231" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">✗ I'm Out</text>
-          <!-- Upcoming label -->
-          <text x="18" y="280" font-family="Inter,sans-serif" font-size="9" font-weight="800" letter-spacing="1.5" fill="#FF7A6E" text-decoration="none">UPCOMING</text>
-          <rect x="14" y="288" width="212" height="44" rx="10" fill="white"/>
-          <text x="26" y="306" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#4FD1C5">Book club</text>
-          <text x="26" y="320" font-family="Inter,sans-serif" font-size="9" fill="#6B7A8D">Sun May 17 · 4:00 PM</text>
-          <rect x="14" y="338" width="212" height="44" rx="10" fill="white" opacity="0.7"/>
-          <text x="26" y="356" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#4FD1C5">Hiking trip</text>
-          <text x="26" y="370" font-family="Inter,sans-serif" font-size="9" fill="#6B7A8D">Sat May 24 · 8:00 AM</text>
-        </svg>
+        <img src="assets/screens/auto-invites.webp" alt="GroupThat schedule review screen showing a weekly recurring meetup with automatic invites" loading="lazy" width="640" height="1214">
       </div>
     </div>
 
@@ -590,37 +560,7 @@
       </div>
       <p class="screen-desc">"I'm In" or "I'm Out." Done in a single tap.</p>
       <div class="phone-wrap">
-        <svg viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 16px 40px rgba(45,55,72,0.2))">
-          <rect x="2" y="2" width="236" height="416" rx="28" fill="#2D3748"/>
-          <rect x="8" y="8" width="224" height="404" rx="22" fill="#F5F7FA"/>
-          <rect x="82" y="12" width="76" height="16" rx="8" fill="#2D3748"/>
-          <text x="18" y="38" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#2D3748">9:41</text>
-          <text x="210" y="38" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#2D3748" text-anchor="end">●●●</text>
-          <text x="18" y="70" font-family="Poppins,Inter,sans-serif" font-size="14" font-weight="800" fill="#4A90E2">Are you coming?</text>
-          <rect x="14" y="80" width="212" height="130" rx="14" fill="white"/>
-          <text x="28" y="104" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#4FD1C5">Pickleball night</text>
-          <text x="28" y="119" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D">Thursday, May 7 · 6:30 PM</text>
-          <circle cx="36" cy="141" r="5" fill="#48bb78"/>
-          <text x="44" y="145" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#48bb78">7</text>
-          <text x="56" y="145" font-family="Inter,sans-serif" font-size="11" fill="#2D3748">In</text>
-          <circle cx="82" cy="141" r="5" fill="#FF7A6E"/>
-          <text x="90" y="145" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#2D3748">2 Out</text>
-          <!-- Tapped "I'm In" button — active/green -->
-          <rect x="28" y="156" width="86" height="40" rx="10" fill="#48bb78"/>
-          <!-- Checkmark pulse ring -->
-          <rect x="25" y="153" width="92" height="46" rx="13" fill="none" stroke="#48bb78" stroke-width="2" opacity="0.4"/>
-          <text x="71" y="181" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="white" text-anchor="middle">✓ I'm In</text>
-          <rect x="120" y="156" width="86" height="40" rx="10" fill="#FF7A6E" opacity="0.7"/>
-          <text x="163" y="181" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="middle">✗ I'm Out</text>
-          <!-- Confirmed badge -->
-          <rect x="14" y="224" width="212" height="48" rx="12" fill="#48bb78" opacity="0.12"/>
-          <text x="120" y="244" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#2D3748" text-anchor="middle">You're in for Thursday!</text>
-          <text x="120" y="260" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D" text-anchor="middle">We'll remind you the day before.</text>
-          <!-- tap indicator -->
-          <circle cx="96" cy="296" r="18" fill="rgba(74,144,226,0.12)"/>
-          <circle cx="96" cy="296" r="10" fill="rgba(74,144,226,0.25)"/>
-          <circle cx="96" cy="296" r="4" fill="#4A90E2"/>
-        </svg>
+        <img src="assets/screens/one-tap-rsvp.webp" alt="GroupThat meetup screen with I'm In and I'm Out RSVP buttons" loading="lazy" width="640" height="1200">
       </div>
     </div>
 
@@ -632,91 +572,19 @@
       </div>
       <p class="screen-desc">See who's coming in real time. Plan ahead with confidence.</p>
       <div class="phone-wrap">
-        <svg viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 16px 40px rgba(45,55,72,0.2))">
-          <rect x="2" y="2" width="236" height="416" rx="28" fill="#2D3748"/>
-          <rect x="8" y="8" width="224" height="404" rx="22" fill="#F5F7FA"/>
-          <rect x="82" y="12" width="76" height="16" rx="8" fill="#2D3748"/>
-          <text x="18" y="38" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#2D3748">9:41</text>
-          <text x="210" y="38" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#2D3748" text-anchor="end">●●●</text>
-          <text x="18" y="68" font-family="Poppins,Inter,sans-serif" font-size="14" font-weight="800" fill="#4A90E2">Who's in?</text>
-          <!-- Big count card -->
-          <rect x="14" y="76" width="212" height="88" rx="14" fill="white"/>
-          <text x="28" y="100" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#4FD1C5">Pickleball night</text>
-          <text x="28" y="115" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D">Thursday, May 7 · 6:30 PM</text>
-          <!-- In / Out counts - same size, centered -->
-          <text x="76" y="151" font-family="Poppins,Inter,sans-serif" font-size="36" font-weight="900" fill="#48bb78" text-anchor="middle">12</text>
-          <text x="76" y="164" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D" text-anchor="middle">In</text>
-          <line x1="120" y1="132" x2="120" y2="164" stroke="#e2e8f2" stroke-width="1"/>
-          <text x="162" y="151" font-family="Poppins,Inter,sans-serif" font-size="36" font-weight="900" fill="#FF7A6E" text-anchor="middle">2</text>
-          <text x="162" y="164" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D" text-anchor="middle">Out</text>
-          <!-- people list -->
-          <text x="18" y="190" font-family="Inter,sans-serif" font-size="9" font-weight="700" letter-spacing="1" fill="#FF7A6E">WHO'S IN</text>
-          <rect x="14" y="196" width="212" height="32" rx="8" fill="white"/>
-          <circle cx="30" cy="212" r="9" fill="#4A90E2"/>
-          <text x="30" y="216" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">JT</text>
-          <text x="46" y="215" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#2D3748">Jake T.</text>
-          <circle cx="202" cy="211" r="7" fill="#48bb78"/><polyline points="198,211 201,214 207,208" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          <rect x="14" y="232" width="212" height="32" rx="8" fill="white"/>
-          <circle cx="30" cy="248" r="9" fill="#4FD1C5"/>
-          <text x="30" y="252" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">ML</text>
-          <text x="46" y="251" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#2D3748">Mia L.</text>
-          <circle cx="202" cy="247" r="7" fill="#48bb78"/><polyline points="198,247 201,250 207,244" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          <rect x="14" y="268" width="212" height="32" rx="8" fill="white"/>
-          <circle cx="30" cy="284" r="9" fill="#FF7A6E"/>
-          <text x="30" y="288" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">CR</text>
-          <text x="46" y="287" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#2D3748">Chris R.</text>
-          <circle cx="202" cy="283" r="7" fill="#48bb78"/><polyline points="198,283 201,286 207,280" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          <rect x="14" y="304" width="212" height="32" rx="8" fill="white" opacity="0.7"/>
-          <circle cx="30" cy="320" r="9" fill="#9F7AEA"/>
-          <text x="30" y="324" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">SA</text>
-          <text x="46" y="323" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#2D3748">Sara A.</text>
-          <circle cx="202" cy="319" r="7" fill="#48bb78"/><polyline points="198,319 201,322 207,316" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          <text x="120" y="364" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D" text-anchor="middle">+ 8 more confirmed</text>
-        </svg>
+        <img src="assets/screens/live-headcount.webp" alt="GroupThat live headcount screen showing who is in, out, and undecided" loading="lazy" width="640" height="1210">
       </div>
     </div>
 
-    <!-- Screen 4: Smart Messaging -->
+    <!-- Screen 4: Auto Mute -->
     <div class="screen-col">
       <div class="screen-label">
         <div class="screen-num" style="background:#9F7AEA;">4</div>
-        <div class="screen-title">Smart Messaging</div>
+        <div class="screen-title">Auto Mute</div>
       </div>
-      <p class="screen-desc">Mute messages if you're not going that week. Only the right people get updates.</p>
+      <p class="screen-desc">Sitting out this week? We'll mute your notifications and bring you back automatically.</p>
       <div class="phone-wrap">
-        <svg viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 16px 40px rgba(45,55,72,0.2))">
-          <rect x="2" y="2" width="236" height="416" rx="28" fill="#2D3748"/>
-          <rect x="8" y="8" width="224" height="404" rx="22" fill="#F5F7FA"/>
-          <rect x="82" y="12" width="76" height="16" rx="8" fill="#2D3748"/>
-          <text x="18" y="38" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#2D3748">9:41</text>
-          <text x="210" y="38" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#2D3748" text-anchor="end">●●●</text>
-          <!-- Muted toast -->
-          <rect x="14" y="48" width="212" height="52" rx="12" fill="#2D3748"/>
-          <text x="44" y="68" font-family="Inter,sans-serif" font-size="9" font-weight="800" fill="white">You're out this week</text>
-          <text x="44" y="82" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.8)">Chat muted until you're back in</text>
-          <g transform="translate(26,69)" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"><path d="M6 2a4 4 0 0 1 4 4v3l1 2H1l1-2V6a4 4 0 0 1 4-4z"/><path d="M4.5 11.5a1.5 1.5 0 0 0 3 0"/><line x1="1" y1="1" x2="11" y2="11"/></g>
-          <!-- Chat list -->
-          <text x="18" y="124" font-family="Poppins,Inter,sans-serif" font-size="14" font-weight="800" fill="#4A90E2">Pickleball night</text>
-          <!-- Chat bubble 1 -->
-          <rect x="14" y="132" width="160" height="38" rx="10" fill="white"/>
-          <text x="24" y="148" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#4FD1C5">Jake T.</text>
-          <text x="24" y="162" font-family="Inter,sans-serif" font-size="10" fill="#2D3748">Still on for Thursday! 🎉</text>
-          <!-- Chat bubble 2 -->
-          <rect x="14" y="176" width="148" height="38" rx="10" fill="white"/>
-          <text x="24" y="192" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#4FD1C5">Mia L.</text>
-          <text x="24" y="206" font-family="Inter,sans-serif" font-size="10" fill="#2D3748">See you at 6:30 💪</text>
-          <!-- Muted overlay card -->
-          <rect x="14" y="220" width="212" height="120" rx="14" fill="white" opacity="0.95"/>
-          <rect x="14" y="220" width="212" height="120" rx="14" fill="rgba(45,55,72,0.04)"/>
-          <g transform="translate(108,232)" stroke="#2D3748" stroke-width="1.8" fill="none" stroke-linecap="round"><path d="M6 2a4 4 0 0 1 4 4v3l1 2H1l1-2V6a4 4 0 0 1 4-4z"/><path d="M4.5 11.5a1.5 1.5 0 0 0 3 0"/><line x1="1" y1="1" x2="11" y2="11"/></g>
-          <text x="120" y="274" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#2D3748" text-anchor="middle">Chat is muted this week</text>
-          <text x="120" y="290" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D" text-anchor="middle">You'll rejoin automatically</text>
-          <text x="120" y="304" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D" text-anchor="middle">when you're back in.</text>
-          <!-- upcoming mini -->
-          <rect x="14" y="352" width="212" height="44" rx="10" fill="white"/>
-          <text x="26" y="370" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#4FD1C5">Next week · May 14</text>
-          <text x="26" y="385" font-family="Inter,sans-serif" font-size="10" fill="#6B7A8D">Tap to RSVP when ready</text>
-        </svg>
+        <img src="assets/screens/auto-mute.webp" alt="GroupThat mute notifications screen with options to mute until the next meetup" loading="lazy" width="640" height="1119">
       </div>
     </div>
 
