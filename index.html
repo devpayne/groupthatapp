@@ -318,26 +318,53 @@
 
     /* ── WATCH ── */
     .watch-section {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 32px 48px 96px;
+      max-width: 1000px;
+      margin: 16px auto 96px;
+      padding: 0 24px;
+    }
+    .watch-card {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: linear-gradient(135deg, #232e42 0%, #2D3748 55%, #1c2433 100%);
+      border-radius: 32px;
+      padding: 64px 32px 56px;
       text-align: center;
+      box-shadow: 0 24px 60px rgba(45,55,72,0.25);
     }
-    .watch-section h2 {
+    .watch-card::before, .watch-card::after {
+      content: '';
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      filter: blur(70px);
+      z-index: -1;
+    }
+    .watch-card::before { background: rgba(74,144,226,0.4); top: -120px; left: -100px; }
+    .watch-card::after { background: rgba(79,209,197,0.32); bottom: -140px; right: -100px; }
+    .watch-pill {
+      display: inline-block;
+      background: rgba(255,122,110,0.16);
+      color: #ffb3aa;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .watch-card h2 {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(26px, 3.5vw, 40px);
+      font-size: clamp(26px, 3.8vw, 42px);
       font-weight: 800;
+      line-height: 1.18;
       letter-spacing: -1px;
-      margin-bottom: 12px;
-      color: var(--charcoal);
+      margin-bottom: 36px;
+      color: var(--white);
     }
-    .watch-intro {
-      font-size: 16px;
-      color: var(--gray-mid);
-      max-width: 460px;
-      margin: 0 auto 36px;
-    }
-    .watch-embed { max-width: 400px; margin: 0 auto; }
+    .watch-card h2 .l2 { color: var(--mint); font-style: italic; }
+    .watch-embed { max-width: 340px; margin: 0 auto; }
     .watch-embed .instagram-media { margin: 0 auto !important; }
     /* Poster-card fallback, shown until (or unless) Instagram's embed.js swaps in the live player */
     .watch-poster {
@@ -377,15 +404,17 @@
     }
     .watch-follow {
       display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 28px;
-      font-size: 15px; font-weight: 700;
+      margin-top: 32px;
+      background: var(--white);
       color: var(--charcoal);
+      font-size: 14px; font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 50px;
       text-decoration: none;
-      transition: color 0.15s;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .watch-follow svg { flex-shrink: 0; transition: transform 0.15s; }
-    .watch-follow:hover { color: var(--blue); }
-    .watch-follow:hover svg { transform: translateY(-1px); }
+    .watch-follow svg { flex-shrink: 0; }
+    .watch-follow:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
 
     /* ── SOCIAL (footer) ── */
     .footer-social {
@@ -538,7 +567,8 @@
       .prob-item + .prob-item { border-left: none; border-top: 1px solid #dce4ef; padding-top: 28px; }
       .prob-item { padding: 0; }
       .screens-section { padding: 64px 24px; }
-      .watch-section { padding: 24px 24px 64px; }
+      .watch-section { margin: 8px auto 64px; padding: 0 16px; }
+      .watch-card { padding: 48px 24px 44px; border-radius: 24px; }
       .screens-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
       .features { padding: 64px 24px; }
       .feat-grid { grid-template-columns: 1fr; }
@@ -679,24 +709,26 @@
 
 <!-- WATCH -->
 <section class="watch-section">
-  <h2>See it in action.</h2>
-  <p class="watch-intro">Watch a group get created from scratch — schedule, members, and all — in under a minute.</p>
-  <div class="watch-embed">
-    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dc4hfq2umHG/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%; max-width:400px; min-width:280px; margin:0 auto;">
-      <a class="watch-poster" href="https://www.instagram.com/reel/Dc4hfq2umHG/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" rel="noopener" aria-label='Watch "Creating a Group" on Instagram'>
-        <span class="watch-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2D3748"><path d="M8 5v14l11-7z"/></svg></span>
-        <span class="watch-poster-label">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          Watch on Instagram
-        </span>
-      </a>
-    </blockquote>
-    <script async src="https://www.instagram.com/embed.js"></script>
+  <div class="watch-card">
+    <div class="watch-pill">🎬 See It In Action</div>
+    <h2>Create a group in minutes,<br><span class="l2">save hours every week.</span></h2>
+    <div class="watch-embed">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dc4hfq2umHG/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%; max-width:340px; min-width:280px; margin:0 auto;">
+        <a class="watch-poster" href="https://www.instagram.com/reel/Dc4hfq2umHG/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" rel="noopener" aria-label='Watch "Creating a Group" on Instagram'>
+          <span class="watch-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2D3748"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="watch-poster-label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Watch on Instagram
+          </span>
+        </a>
+      </blockquote>
+      <script async src="https://www.instagram.com/embed.js"></script>
+    </div>
+    <a class="watch-follow" href="https://www.instagram.com/groupthatapp" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Follow @groupthatapp
+    </a>
   </div>
-  <a class="watch-follow" href="https://www.instagram.com/groupthatapp" target="_blank" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-    Follow @groupthatapp
-  </a>
 </section>
 
 <!-- FEATURES -->
