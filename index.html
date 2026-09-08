@@ -291,6 +291,7 @@
       border-radius: 22px;
       overflow: hidden;
       box-shadow: 0 16px 40px rgba(45,55,72,0.2);
+      aspect-ratio: 640 / 1180;
     }
     .screen-num {
       width: 32px; height: 32px;
@@ -309,7 +310,8 @@
     }
     /* Phone SVG wrapper */
     .phone-wrap img {
-      width: 100%; height: auto; display: block;
+      width: 100%; height: 100%; display: block;
+      object-fit: cover; object-position: top center;
       -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
     }
@@ -548,7 +550,7 @@
       </div>
       <p class="screen-desc">Set your schedule once. GroupThat sends the invites automatically, every time.</p>
       <div class="phone-wrap">
-        <img src="assets/screens/auto-invites.webp" alt="GroupThat schedule review screen showing a weekly recurring meetup with automatic invites" loading="lazy" width="640" height="1214">
+        <img src="assets/screens/auto-invites.webp" alt="GroupThat schedule review screen showing a weekly recurring meetup with automatic invites" loading="lazy" width="640" height="1180">
       </div>
     </div>
 
@@ -560,7 +562,7 @@
       </div>
       <p class="screen-desc">"I'm In" or "I'm Out." Done in a single tap.</p>
       <div class="phone-wrap">
-        <img src="assets/screens/one-tap-rsvp.webp" alt="GroupThat meetup screen with I'm In and I'm Out RSVP buttons" loading="lazy" width="640" height="1200">
+        <img src="assets/screens/one-tap-rsvp.webp" alt="GroupThat meetup screen with I'm In and I'm Out RSVP buttons" loading="lazy" width="640" height="1180">
       </div>
     </div>
 
@@ -572,7 +574,7 @@
       </div>
       <p class="screen-desc">See who's coming in real time. Plan ahead with confidence.</p>
       <div class="phone-wrap">
-        <img src="assets/screens/live-headcount.webp" alt="GroupThat live headcount screen showing who is in, out, and undecided" loading="lazy" width="640" height="1210">
+        <img src="assets/screens/live-headcount.webp" alt="GroupThat live headcount screen showing who is in, out, and undecided" loading="lazy" width="640" height="1180">
       </div>
     </div>
 
@@ -584,7 +586,7 @@
       </div>
       <p class="screen-desc">Sitting out this week? We'll mute your notifications and bring you back automatically.</p>
       <div class="phone-wrap">
-        <img src="assets/screens/auto-mute.webp" alt="GroupThat mute notifications screen with options to mute until the next meetup" loading="lazy" width="640" height="1119">
+        <img src="assets/screens/auto-mute.webp" alt="GroupThat mute notifications screen with options to mute until the next meetup" loading="lazy" width="640" height="1180">
       </div>
     </div>
 
