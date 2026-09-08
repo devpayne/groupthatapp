@@ -185,6 +185,16 @@
     .footer-links { margin-bottom: 8px; }
     .footer-links a { color: var(--gray-mid); font-weight: 600; text-decoration: none; transition: color 0.15s; }
     .footer-links a:hover { color: var(--blue); }
+    .footer-social {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid #e2e8f2;
+      color: var(--gray-mid);
+      margin: 0 auto 16px;
+      transition: color 0.15s, border-color 0.15s, transform 0.15s;
+    }
+    .footer-social:hover { color: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
 
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
@@ -299,6 +309,9 @@
 
 <footer>
   <img src="../GT%202.png" alt="GroupThat">
+  <a class="footer-social" href="https://www.instagram.com/groupthatapp" target="_blank" rel="noopener" aria-label="GroupThat on Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
   <div class="footer-links"><a href="../contact.html">Contact</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></div>
   <p>&copy; 2026 GroupThat. All rights reserved.</p>
 </footer>
