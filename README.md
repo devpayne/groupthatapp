@@ -8,6 +8,7 @@ automatically whenever a change is pushed here.
 | File                         | What it is                          |
 |------------------------------|-------------------------------------|
 | `index.html`                 | Homepage (Stop Chasing People)      |
+| `pricing.html`               | Pricing (Free vs. Premium comparison) |
 | `faq.html`                   | FAQ                                 |
 | `contact.html`                | Contact Us (info@groupthatapp.com)  |
 | `blog/index.html`            | Blog landing page (lists all posts) |
