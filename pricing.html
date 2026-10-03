@@ -183,6 +183,10 @@
       transition: background 0.2s, transform 0.15s;
     }
     .btn-dark:hover { background: var(--blue); transform: translateY(-1px); }
+    .btn-dark svg { margin-right: 8px; flex-shrink: 0; }
+    .btn-dark-outline { background: transparent; color: var(--charcoal); border: 2px solid var(--charcoal); }
+    .btn-dark-outline:hover { background: var(--charcoal); color: var(--white); }
+    .pricing-cta .store-btns { display: flex; flex-direction: row; gap: 12px; flex-shrink: 0; }
 
     @media (max-width: 1100px) {
       .row, .sec { grid-template-columns: minmax(0,1fr) 210px 210px; column-gap: 12px; }
@@ -217,6 +221,7 @@
       .sect { font-size: 11px; padding: 28px 0 10px; }
       .pricing-cta { flex-direction: column; align-items: flex-start; padding: 28px 24px; border-radius: 20px; gap: 20px; }
       .btn-dark { width: 100%; height: 52px; font-size: 17px; }
+      .pricing-cta .store-btns { flex-direction: column; width: 100%; }
     }
 
     /* ── FOOTER ── */
@@ -304,13 +309,13 @@
         <h3>Free</h3>
         <div class="price"><strong>$0</strong></div>
         <div class="plan-note">forever</div>
-        <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-plan btn-outline">Get started</a>
+        <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="app-link btn-plan btn-outline">Get started</a>
       </div>
       <div class="plan plan-prem">
         <div class="plan-top"><span class="badge">FOR ORGANIZERS</span><h3>Premium</h3></div>
         <div class="price"><strong>$4.99</strong><span>/mo</span></div>
         <div class="plan-note">or $39.99/year<br>(save 33%)</div>
-        <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-plan btn-blue">Start Premium</a>
+        <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="app-link btn-plan btn-blue">Start Premium</a>
       </div>
     </div>
 
@@ -335,7 +340,7 @@
     <div class="row"><div class="feat"><span class="ft">Group stats and attendance history</span><span class="fd">Turnout trends over time, who shows up week after week, and who's always a last-minute Out.</span></div><div class="cell"><span class="dash" aria-hidden="true">&mdash;</span><span class="sr">Not included in Free</span></div><div class="pcell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Premium</span></div></div>
     <div class="row"><div class="feat"><span class="ft">Attendance export</span><span class="fd">Download who came to what as a spreadsheet or PDF, ready for your league, ward or school.</span></div><div class="cell"><span class="dash" aria-hidden="true">&mdash;</span><span class="sr">Not included in Free</span></div><div class="pcell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Premium</span></div></div>
 
-    <div class="row row-end"><div class="feat"></div><div class="cell"><a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-plan btn-outline">Get started</a></div><div class="pcell"><a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-plan btn-blue">Start Premium</a></div></div>
+    <div class="row row-end"><div class="feat"></div><div class="cell"><a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="app-link btn-plan btn-outline">Get started</a></div><div class="pcell"><a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="app-link btn-plan btn-blue">Start Premium</a></div></div>
   </section>
 
   <section class="pricing-cta">
@@ -343,7 +348,16 @@
       <h2>Start free. Upgrade when you're ready to take your group to the next level.</h2>
       <p>Members never pay. Cancel Premium anytime and your group keeps everything in Free.</p>
     </div>
-    <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-dark">Get the app</a>
+    <div class="store-btns">
+      <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-dark">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.dallinhull.groupthat&pli=1" class="btn-dark btn-dark-outline">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l12.71-7.34-2.89-2.89L3.18 23.76zM.47 1.31C.17 1.63 0 2.12 0 2.74v18.51c0 .62.17 1.11.48 1.43l.08.07 10.37-10.37v-.24L.55 1.24l-.08.07zm19.44 7.97L17 7.65 14.07 10.6l2.93 2.93 2.93-1.64c.83-.47.83-1.24-.02-1.61zM4.17.24L16.88 7.58l-2.89 2.89L4.17.24z"/></svg>
+        Google Play
+      </a>
+    </div>
   </section>
 
   </div>
@@ -359,6 +373,12 @@
 </footer>
 
 <script>
+  // Send Android visitors to Google Play from the plan buttons (App Store otherwise)
+  if (/android/i.test(navigator.userAgent)) {
+    document.querySelectorAll('.app-link').forEach(function (a) {
+      a.href = 'https://play.google.com/store/apps/details?id=com.dallinhull.groupthat&pli=1';
+    });
+  }
   document.querySelectorAll('.nav-toggle').forEach(function (btn) {
     var menu = btn.parentElement.querySelector('.nav-links');
     if (!menu) return;
