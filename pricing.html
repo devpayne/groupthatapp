@@ -142,10 +142,10 @@
       padding: 36px 28px 32px; text-align: center; border-radius: 24px 24px 0 0;
     }
     .plan-free { background: var(--white); border: 1px solid #E2E8F0; border-bottom: none; }
-    .plan-prem { background: var(--charcoal); margin-bottom: -1px; color: var(--white); }
-    .plan-badge-slot { height: 24px; }
+    .plan-prem { background: var(--charcoal); border: 1px solid var(--charcoal); border-bottom: none; color: var(--white); }
+    .plan-badge-slot { display: block; height: 24px; }
     .plan-top { display: flex; flex-direction: column; gap: 10px; align-items: center; }
-    .badge { padding: 5px 12px; border-radius: 999px; background: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; line-height: 1.2; color: var(--white); }
+    .badge { display: inline-flex; align-items: center; height: 24px; padding: 0 12px; border-radius: 999px; background: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; color: var(--white); }
     .plan h3 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 24px; line-height: 1.3; }
     .price { display: flex; align-items: baseline; justify-content: center; gap: 4px; }
     .price strong { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 40px; line-height: 1.2; }
@@ -159,14 +159,16 @@
       font-size: 16px; font-weight: 700; line-height: 1.2; text-align: center;
       transition: background 0.2s, color 0.2s, transform 0.15s;
     }
-    .plan .btn-plan { margin-top: 8px; }
+    .plan .btn-plan { margin-top: auto; }
+    .plan .plan-note { margin-bottom: 8px; }
     .btn-outline { border: 2px solid var(--charcoal); color: var(--charcoal); }
     .btn-outline:hover { background: var(--charcoal); color: var(--white); transform: translateY(-1px); }
-    .btn-blue { background: var(--blue); color: var(--white); }
-    .btn-blue:hover { background: #3A7BC8; transform: translateY(-1px); }
+    .btn-blue { background: var(--blue); color: var(--white); border: 2px solid var(--blue); }
+    .btn-blue:hover { background: #3A7BC8; border-color: #3A7BC8; transform: translateY(-1px); }
     .row-end .feat { padding-bottom: 32px; }
     .row-end .cell, .row-end .pcell { padding: 24px 20px 32px; border-radius: 0 0 24px 24px; }
     .row-end .cell { border-bottom: 1px solid #E2E8F0; }
+    .col-labels, .short { display: none; }
 
     /* closing card */
     .pricing-cta {
@@ -197,27 +199,42 @@
       .pricing { padding: 48px 16px 72px; }
       .pricing-inner { gap: 48px; }
       .pricing-hero p { font-size: 17px; }
-      .row, .sec { grid-template-columns: minmax(0,1fr) 92px 92px; column-gap: 6px; }
-      .feat { padding: 16px 10px 16px 0; }
-      .ft { font-size: 15px; }
-      .fd { font-size: 13px; }
+      .row, .sec { grid-template-columns: minmax(0,1fr) 68px 68px; column-gap: 4px; }
+      .feat { padding: 16px 12px 16px 0; }
+      .ft { font-size: 16px; }
+      .fd { font-size: 14px; }
+
+      /* plan cards become two full cards above the table */
+      .compare-head { grid-template-columns: 1fr 1fr; column-gap: 10px; row-gap: 0; margin-bottom: 28px; }
       .compare-intro { grid-column: 1 / -1; padding: 0 0 20px; }
-      .compare-head { grid-template-columns: minmax(0,1fr) 92px 92px; }
-      .compare-head .plan-free { grid-column: 2; }
-      .compare-head .plan-prem { grid-column: 3; }
-      .compare-head::before { content: ""; grid-column: 1; grid-row: 2; }
-      .plan { padding: 18px 6px 16px; gap: 4px; border-radius: 16px 16px 0 0; }
-      .plan-badge-slot { height: 18px; }
-      .badge { padding: 3px 6px; font-size: 9px; letter-spacing: 0.04em; }
-      .plan-top { gap: 6px; }
-      .plan h3 { font-size: 16px; }
-      .price strong { font-size: 22px; }
-      .price span, .plan-note { font-size: 11px; }
-      .plan-note { min-height: 30px; }
-      .btn-plan { min-height: 40px; padding: 4px 6px; border-radius: 10px; font-size: 13px; }
-      .row-end .cell, .row-end .pcell { padding: 14px 6px 18px; border-radius: 0 0 16px 16px; }
-      .row-end .feat { padding-bottom: 18px; }
+      .plan { padding: 20px 12px; border-radius: 20px; gap: 6px; }
+      .plan-free { border-bottom: 1px solid #E2E8F0; }
+      .plan-prem { border-bottom: 1px solid var(--charcoal); }
+      .badge { height: 22px; padding: 0 8px; font-size: 10px; letter-spacing: 0.04em; }
+      .plan-badge-slot { height: 22px; }
+      .plan-top { gap: 8px; }
+      .plan h3 { font-size: 19px; }
+      .price strong { font-size: 30px; }
+      .price span, .plan-note { font-size: 13px; }
+      .plan-note { min-height: 36px; }
+      .btn-plan { min-height: 44px; padding: 4px 8px; border-radius: 12px; font-size: 15px; }
+
+      /* column labels stay pinned while scrolling the table */
+      .col-labels { display: grid; position: sticky; top: 0; z-index: 5; background: var(--gray-lt); }
+      .col-labels .cell, .col-labels .pcell {
+        padding: 12px 0 10px; border-radius: 14px 14px 0 0;
+        font-size: 13px; font-weight: 700; color: var(--charcoal);
+      }
+      .col-labels .cell { border-top: 1px solid #E2E8F0; }
+      .col-labels .pcell { color: var(--white); }
+
+      /* bottom of the table: just close the columns (store buttons are in the card below) */
+      .row-end .btn-plan { display: none; }
+      .row-end .cell, .row-end .pcell { padding: 0; height: 20px; border-radius: 0 0 14px 14px; }
+      .row-end .feat { padding: 0; }
       .txt-free, .txt-prem { font-size: 12px; }
+      .long { display: none; }
+      .short { display: inline; }
       .sect { font-size: 11px; padding: 28px 0 10px; }
       .pricing-cta { flex-direction: column; align-items: flex-start; padding: 28px 24px; border-radius: 20px; gap: 20px; }
       .btn-dark { width: 100%; height: 52px; font-size: 17px; }
@@ -305,8 +322,7 @@
         <p>Everything in Free is included in Premium.</p>
       </div>
       <div class="plan plan-free">
-        <div class="plan-badge-slot"></div>
-        <h3>Free</h3>
+        <div class="plan-top"><span class="plan-badge-slot"></span><h3>Free</h3></div>
         <div class="price"><strong>$0</strong></div>
         <div class="plan-note">forever</div>
         <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="app-link btn-plan btn-outline">Get started</a>
@@ -318,6 +334,7 @@
         <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="app-link btn-plan btn-blue">Start Premium</a>
       </div>
     </div>
+    <div class="row col-labels" aria-hidden="true"><div></div><div class="cell">Free</div><div class="pcell">Premium</div></div>
 
     <div class="sec"><div class="sect">INCLUDED IN FREE</div><div class="cell"></div><div class="pcell"></div></div>
     <div class="row"><div class="feat"><span class="ft">Recurring meetups on autopilot</span><span class="fd">Set the days and time once. Every meetup is created for you, week after week.</span></div><div class="cell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D3748" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Free</span></div><div class="pcell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Premium</span></div></div>
@@ -329,7 +346,7 @@
     <div class="row"><div class="feat"><span class="ft">Remind all undecided users</span><span class="fd">One tap nudges everyone who hasn't answered yet.</span></div><div class="cell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D3748" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Free</span></div><div class="pcell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Premium</span></div></div>
     <div class="row"><div class="feat"><span class="ft">Group chat with photos</span><span class="fd">Talk logistics and share pics in the same place you RSVP.</span></div><div class="cell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D3748" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Free</span></div><div class="pcell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Premium</span></div></div>
     <div class="row"><div class="feat"><span class="ft">Smart muting</span><span class="fd">Sit one out and the chat goes quiet, then turns back on for the next meetup.</span></div><div class="cell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D3748" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Free</span></div><div class="pcell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Premium</span></div></div>
-    <div class="row"><div class="feat"><span class="ft">RSVP reaction cards</span><span class="fd">A fun reaction card for every In and Out.</span></div><div class="cell"><span class="txt-free">Standard set</span></div><div class="pcell"><span class="txt-prem">Fully customizable</span></div></div>
+    <div class="row"><div class="feat"><span class="ft">RSVP reaction cards</span><span class="fd">A fun reaction card for every In and Out.</span></div><div class="cell"><span class="txt-free">Standard<span class="long"> set</span></span></div><div class="pcell"><span class="txt-prem"><span class="long">Fully customizable</span><span class="short">Custom</span></span></div></div>
     <div class="sec"><div class="sect">PREMIUM ADDS</div><div class="cell"></div><div class="pcell"></div></div>
     <div class="row"><div class="feat"><span class="ft">Tenure RSVP scheduling</span><span class="fd">Your regulars get an early RSVP window before it opens to everyone, on a rule the whole group can see.</span></div><div class="cell"><span class="dash" aria-hidden="true">&mdash;</span><span class="sr">Not included in Free</span></div><div class="pcell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Premium</span></div></div>
     <div class="row"><div class="feat"><span class="ft">Custom RSVP questions</span><span class="fd">Ask “Bringing kids?” or “Need a ride?” right in the RSVP, and see the answers next to the headcount.</span></div><div class="cell"><span class="dash" aria-hidden="true">&mdash;</span><span class="sr">Not included in Free</span></div><div class="pcell"><span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="sr">Included in Premium</span></div></div>
