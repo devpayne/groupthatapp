@@ -12,7 +12,7 @@
   // are staggered so grids and lists cascade in rather than pop together.
   var AUTO = [
     '.section-eyebrow', '.screens-section h2', '.screens-intro',
-    '.problem-title', '.prob-item', '.feat-card', '.ben-item',
+    '.feat-card', '.ben-item',
     '.features-inner h2', '.cta-section h2', '.cta-section p', '.cta-section .btn-row',
     '.page-header > *', '.pricing-hero > *', '.blog-head > *', '.article > *:not(.article-body)',
     '.faq-group', '.contact-card', '.post-card', '.policy-body > *:nth-child(-n+3)',
