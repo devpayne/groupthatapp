@@ -16,8 +16,16 @@ automatically whenever a change is pushed here.
 | `blog/vs-group-chat.html`    | Organizer-first vs. chat-first |
 | `blog/whos-in-whos-out.html` | Live headcounts, guests, and mute-until-next-meetup |
 | `assets/`                    | Background videos + posters and the social-share (Open Graph) image |
+| `assets/screens/`            | App screenshots, 600×1300 (iPhone proportions), shown inside CSS iPhone frames on the homepage |
+| `assets/motion.css` / `motion.js` | Shared polish loaded by every page: sticky frosted nav and scroll-in animations |
 
-Each page is fully self-contained; the pages link to each other by filename.
+Each page carries its own styles; the only shared files are `assets/motion.css` and
+`assets/motion.js`, which every page links in its `<head>`. The pages link to each
+other by filename.
+
+To make anything fade in as it scrolls into view, add `data-reveal` to it
+(`data-reveal="zoom"` or `"fade"` for variations). New app screenshots should be
+cropped to 600×1300 so they fill the iPhone frame exactly.
 
 ## How to publish a change
 1. A change is made to a file above (Claude Code can do this for you).
