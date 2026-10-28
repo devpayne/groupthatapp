@@ -113,12 +113,100 @@
       isolation: isolate;
       background: var(--charcoal) url('assets/video/pickup-basketball.jpg') center/cover no-repeat;
       color: var(--white);
-      padding: 96px 48px 108px;
-      text-align: center;
+      padding: 88px 48px 96px;
     }
     .hero .bg-scrim {
-      background: linear-gradient(180deg, rgba(20,26,38,0.70) 0%, rgba(20,26,38,0.78) 55%, rgba(20,26,38,0.92) 100%);
+      background:
+        radial-gradient(60% 70% at 78% 55%, rgba(74,144,226,0.28) 0%, rgba(74,144,226,0) 70%),
+        linear-gradient(100deg, rgba(16,21,32,0.94) 0%, rgba(20,26,38,0.82) 50%, rgba(20,26,38,0.72) 100%);
     }
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 48px;
+    }
+    .hero-copy { text-align: left; }
+    .hero-copy > * { animation: gt-rise 0.9s cubic-bezier(.2,.7,.2,1) both; }
+    .hero-copy > :nth-child(2) { animation-delay: 0.08s; }
+    .hero-copy > :nth-child(3) { animation-delay: 0.16s; }
+    .hero-copy > :nth-child(4) { animation-delay: 0.24s; }
+    .hero-copy > :nth-child(5) { animation-delay: 0.32s; }
+    @keyframes gt-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+    /* Rotating group type under the headline */
+    .hero-for {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.72);
+      margin-top: 18px;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .rotator {
+      position: relative;
+      display: inline-grid;
+      color: var(--mint);
+      font-weight: 700;
+      justify-items: start;
+    }
+    .rotator > span { grid-area: 1 / 1; white-space: nowrap; }
+    .js .rotator > span { opacity: 0; transform: translateY(70%); transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.7,.2,1); }
+    .js .rotator > span.on { opacity: 1; transform: none; }
+    .js .rotator > span.off { opacity: 0; transform: translateY(-70%); }
+    .rotator > span:not(:first-child) { visibility: hidden; }
+    .js .rotator > span { visibility: visible; }
+
+    /* Floating phones */
+    .hero-phones {
+      position: relative;
+      height: 600px;
+      perspective: 1400px;
+      animation: gt-rise 1.1s 0.2s cubic-bezier(.2,.7,.2,1) both;
+    }
+    .hero-phones .iphone { position: absolute; width: 262px; }
+    .hero-phones .ph-back {
+      left: 4%; top: 46px;
+      --rot: -8deg;
+      opacity: 0.92;
+      animation: gt-float 7s ease-in-out infinite;
+    }
+    .hero-phones .ph-front {
+      right: 4%; top: 0;
+      --rot: 5deg;
+      animation: gt-float 6s -2s ease-in-out infinite;
+      box-shadow: 0 40px 80px -20px rgba(0,0,0,0.65), 0 0 0 1px #0b0c0f, inset 0 0 0 1.5px rgba(255,255,255,0.14);
+    }
+    .hero-tilt { position: absolute; inset: 0; transition: transform 0.6s cubic-bezier(.2,.7,.2,1); transform-style: preserve-3d; }
+    @keyframes gt-float {
+      0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+      50%      { transform: translateY(-16px) rotate(var(--rot)); }
+    }
+    /* Little live-update chip floating beside the phones */
+    .hero-chip {
+      position: absolute;
+      left: -6%; bottom: 74px;
+      z-index: 3;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.96);
+      color: var(--charcoal);
+      padding: 10px 16px 10px 10px;
+      border-radius: 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      font-size: 13px; font-weight: 700;
+      animation: gt-float 5s -1s ease-in-out infinite;
+      --rot: 0deg;
+    }
+    .hero-chip .dot {
+      width: 30px; height: 30px; border-radius: 9px;
+      background: rgba(79,209,197,0.18); color: #2c9f95;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-chip small { display: block; font-size: 11px; font-weight: 600; color: var(--gray-mid); }
+    .hero-chip b { font-variant-numeric: tabular-nums; display: inline-block; }
+    .hero-chip b.bump { animation: gt-bump 0.5s ease; }
+    @keyframes gt-bump { 40% { transform: translateY(-3px) scale(1.25); color: #2c9f95; } }
     .hero-pill {
       display: inline-block;
       background: rgba(74,144,226,0.18);
@@ -127,31 +215,76 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 6px 16px;
+      padding: 7px 16px 7px 12px;
       border-radius: 50px;
-      margin-bottom: 32px;
+      margin-bottom: 26px;
+      border: 1px solid rgba(127,184,245,0.25);
+      display: inline-flex; align-items: center; gap: 8px;
     }
+    .hero-pill .pulse {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 0 rgba(79,209,197,0.6);
+      animation: gt-pulse 2s ease-out infinite;
+    }
+    @keyframes gt-pulse { 70% { box-shadow: 0 0 0 9px rgba(79,209,197,0); } 100% { box-shadow: 0 0 0 0 rgba(79,209,197,0); } }
+
+    /* ── MARQUEE ── */
+    .marquee {
+      background: #141a26;
+      color: rgba(255,255,255,0.7);
+      padding: 18px 0;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: gt-marquee 48s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track ul { display: flex; list-style: none; flex-shrink: 0; }
+    .marquee-track li {
+      display: flex; align-items: center; gap: 14px;
+      padding-right: 40px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px; font-weight: 600;
+      white-space: nowrap;
+    }
+    .marquee-track li::after {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--mint);
+      margin-left: 26px;
+    }
+    @keyframes gt-marquee { to { transform: translateX(-50%); } }
     .hero h1 {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(36px, 5.5vw, 64px);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -1.5px;
-      max-width: 920px;
-      margin: 0 auto 8px;
+      font-size: clamp(38px, 5.4vw, 66px);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -2px;
+      max-width: 620px;
     }
     .hero h1 .l2 {
-      color: var(--blue);
-      font-style: italic;
       display: inline;
+      background: linear-gradient(90deg, #6aa9ef 0%, var(--blue) 30%, var(--mint) 60%, #6aa9ef 100%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gt-shine 8s linear infinite;
     }
+    @keyframes gt-shine { to { background-position: -220% 0; } }
     .hero-sub {
       font-family: 'Inter', sans-serif;
       font-size: 19px;
-      color: rgba(255,255,255,0.55);
-      max-width: 640px;
-      margin: 20px auto 44px;
+      color: rgba(255,255,255,0.68);
+      max-width: 520px;
+      margin: 20px 0 0;
     }
+    .hero .btn-row { justify-content: flex-start; margin-top: 36px; }
     .btn-row {
       display: flex;
       gap: 14px;
@@ -260,12 +393,6 @@
       gap: 28px;
       align-items: start;
     }
-    .screens-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-      align-items: start;
-    }
     .screen-col {
       display: grid;
       grid-template-rows: subgrid;
@@ -288,10 +415,64 @@
     }
     .phone-wrap {
       align-self: start;
-      border-radius: 22px;
+      padding: 8px 6% 0;
+    }
+    .phone-wrap .iphone { transition: transform 0.5s cubic-bezier(.2,.7,.2,1), box-shadow 0.5s; }
+    .screen-col:hover .iphone {
+      transform: translateY(-10px) rotate(-1.5deg);
+      box-shadow: 0 46px 70px -24px rgba(20,30,50,0.55), 0 0 0 1px #0b0c0f, inset 0 0 0 1.5px rgba(255,255,255,0.14);
+    }
+
+    /* ── iPHONE FRAME ──
+       Pure CSS device; every size is a percentage so it scales with its
+       column. Screens are 600x1300 (iPhone 19.5:9). */
+    .iphone {
+      position: relative;
+      width: 100%;
+      padding: 3.4%;
+      border-radius: 16.5% / 7.6%;
+      background: linear-gradient(150deg, #4a4f58 0%, #1d1f24 22%, #2b2e35 60%, #121317 100%);
+      box-shadow: 0 30px 60px -22px rgba(20,30,50,0.5), 0 0 0 1px #0b0c0f, inset 0 0 0 1.5px rgba(255,255,255,0.14);
+    }
+    /* Side buttons */
+    .iphone::before, .iphone::after {
+      content: '';
+      position: absolute;
+      width: 1.3%;
+      background: linear-gradient(90deg, #2b2e35, #4a4f58);
+      border-radius: 2px;
+    }
+    .iphone::before { left: -1.1%; top: 20%; height: 11%; }
+    .iphone::after  { right: -1.1%; top: 25%; height: 14%; }
+    .iphone-screen {
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 16px 40px rgba(45,55,72,0.2);
-      aspect-ratio: 640 / 1180;
+      border-radius: 13.6% / 6.3%;
+      aspect-ratio: 600 / 1300;
+      background: #000;
+      transform: translateZ(0); /* keeps the rounded clip crisp in Safari */
+    }
+    .iphone-screen { display: block; }
+    .iphone-screen img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    /* Dynamic Island */
+    .iphone-screen::before {
+      content: '';
+      position: absolute;
+      top: 1.5%; left: 50%;
+      width: 30%;
+      aspect-ratio: 126 / 37;
+      transform: translateX(-50%);
+      background: #000;
+      border-radius: 999px;
+      z-index: 2;
+    }
+    /* Glass glare */
+    .iphone-screen::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(115deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 32%);
+      pointer-events: none;
+      z-index: 1;
     }
     .screen-num {
       width: 32px; height: 32px;
@@ -307,13 +488,6 @@
       font-size: 16px;
       font-weight: 700;
       color: var(--charcoal);
-    }
-    /* Phone SVG wrapper */
-    .phone-wrap img {
-      width: 100%; height: 100%; display: block;
-      object-fit: cover; object-position: top center;
-      -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
-      mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
     }
 
     /* ── WATCH ── */
@@ -364,22 +538,19 @@
       color: var(--white);
     }
     .watch-card h2 .l2 { color: var(--mint); font-style: italic; }
-    .watch-embed { max-width: 340px; margin: 0 auto; }
+    .watch-embed { max-width: 290px; margin: 0 auto; }
+    .watch-embed .iphone { display: block; transition: transform 0.4s cubic-bezier(.2,.7,.2,1); }
+    .watch-embed .iphone:hover { transform: translateY(-6px) scale(1.02); }
     /* Poster card linking out to the reel — kept as a plain link rather than
        Instagram's inline embed widget, which doesn't render reliably on mobile. */
     .watch-poster {
-      position: relative;
-      display: block;
-      aspect-ratio: 640 / 1180;
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 16px 40px rgba(45,55,72,0.2);
-      background: #2D3748 url('assets/screens/auto-invites.webp') center/cover no-repeat;
+      position: absolute; inset: 0;
+      z-index: 3;
     }
     .watch-poster::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(45,55,72,0.05) 0%, rgba(45,55,72,0.55) 100%);
+      background: linear-gradient(to bottom, rgba(20,26,38,0.05) 0%, rgba(20,26,38,0.6) 100%);
     }
     .watch-play {
       position: absolute; top: 50%; left: 50%;
@@ -392,7 +563,15 @@
       z-index: 1;
       transition: transform 0.2s;
     }
-    .watch-poster:hover .watch-play { transform: translate(-50%, -50%) scale(1.08); }
+    .watch-play::before {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.8);
+      animation: gt-ring 2.2s ease-out infinite;
+    }
+    @keyframes gt-ring { from { transform: scale(1); opacity: 0.9; } to { transform: scale(1.7); opacity: 0; } }
+    .iphone:hover .watch-play { transform: translate(-50%, -50%) scale(1.08); }
     .watch-play svg { margin-left: 4px; }
     .watch-poster-label {
       position: absolute; left: 20px; right: 20px; bottom: 18px;
@@ -458,7 +637,27 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .feat-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(74,144,226,0.10); }
-    .feat-icon { font-size: 30px; margin-bottom: 16px; }
+    .feat-card { position: relative; overflow: hidden; }
+    .feat-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent, var(--blue));
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.35s ease;
+    }
+    .feat-card:hover::before { transform: scaleY(1); }
+    .feat-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      color: var(--accent, var(--blue));
+      background: color-mix(in srgb, var(--accent, var(--blue)) 13%, white);
+      transition: transform 0.35s cubic-bezier(.2,.7,.2,1);
+    }
+    .feat-card:hover .feat-icon { transform: scale(1.08) rotate(-4deg); }
     .feat-card h3 {
       font-family: 'Poppins', sans-serif;
       font-size: 19px; font-weight: 700;
@@ -468,9 +667,12 @@
 
     /* ── BENEFITS ── */
     .benefits {
-      background: var(--blue);
+      background: linear-gradient(120deg, #3f82d4 0%, var(--blue) 45%, #45a7d8 100%);
+      background-size: 200% 200%;
+      animation: gt-band 14s ease-in-out infinite alternate;
       padding: 60px 48px;
     }
+    @keyframes gt-band { to { background-position: 100% 50%; } }
     .benefits-inner {
       max-width: 900px;
       margin: 0 auto;
@@ -561,7 +763,17 @@
       .nav-links.open { display: flex; }
       .nav-link { opacity: 1; padding: 12px 16px; border-radius: 8px; }
       .nav-link:hover { opacity: 1; background: rgba(0,0,0,0.05); }
-      .hero { padding: 72px 24px 84px; }
+      .hero { padding: 56px 24px 72px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .hero-copy { text-align: center; }
+      .hero h1 { margin: 0 auto; }
+      .hero-sub { margin: 18px auto 0; }
+      .hero-for { flex-direction: column; gap: 2px; }
+      .rotator { justify-items: center; }
+      .hero .btn-row { justify-content: center; }
+      .hero-phones { height: 440px; max-width: 400px; width: 100%; margin: 0 auto; }
+      .hero-phones .iphone { width: 188px; }
+      .hero-chip { left: 0; bottom: 40px; }
       .problem { padding: 36px 24px; }
       .problem-inner { grid-template-columns: 1fr; gap: 28px; }
       .prob-item + .prob-item { border-left: none; border-top: 1px solid #dce4ef; padding-top: 28px; }
@@ -569,7 +781,7 @@
       .screens-section { padding: 64px 24px; }
       .watch-section { margin: 8px auto 64px; padding: 0 16px; }
       .watch-card { padding: 48px 24px 44px; border-radius: 24px; }
-      .screens-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+      .screens-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 24px; }
       .features { padding: 64px 24px; }
       .feat-grid { grid-template-columns: 1fr; }
       .benefits { padding: 48px 24px; }
@@ -580,7 +792,19 @@
       footer { padding: 28px 24px; }
     }
     @media (max-width: 560px) {
-      .screens-grid { grid-template-columns: 1fr; }
+      .screens-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+      .hero-phones { height: 400px; }
+      .hero-phones .iphone { width: 168px; }
+      .hero-phones .ph-back { left: 2%; }
+      .hero-phones .ph-front { right: 2%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-copy > *, .hero-phones, .hero-phones .iphone, .hero-chip, .hero h1 .l2,
+      .marquee-track, .benefits, .watch-play::before { animation: none !important; }
+      .hero-phones .iphone, .hero-chip { transform: rotate(var(--rot)); }
+      .marquee-track { flex-wrap: wrap; width: auto; justify-content: center; }
+      .marquee-track ul[aria-hidden] { display: none; }
+      .marquee-track ul { flex-wrap: wrap; justify-content: center; row-gap: 8px; }
     }
 
     .nav-right { display: flex; align-items: center; gap: 24px; }
@@ -588,6 +812,8 @@
     .nav-link:hover { opacity: 1; }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>
+  <link rel="stylesheet" href="assets/motion.css">
+  <script src="assets/motion.js"></script>
 </head>
 <body>
 
@@ -615,20 +841,58 @@
     <source src="assets/video/pickup-basketball.mp4" type="video/mp4">
   </video>
   <div class="bg-scrim"></div>
-  <div class="hero-pill">Now available on iOS &amp; Android</div>
-  <h1>Automate Your <span class="l2">Weekly Meetups.</span></h1>
-  <p class="hero-sub">Group chats weren't built for organizing meetups. GroupThat was.</p>
-  <div class="btn-row" id="download">
-    <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-white">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      App Store
-    </a>
-    <a href="https://play.google.com/store/apps/details?id=com.dallinhull.groupthat&pli=1" class="btn-ghost">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l12.71-7.34-2.89-2.89L3.18 23.76zM.47 1.31C.17 1.63 0 2.12 0 2.74v18.51c0 .62.17 1.11.48 1.43l.08.07 10.37-10.37v-.24L.55 1.24l-.08.07zm19.44 7.97L17 7.65 14.07 10.6l2.93 2.93 2.93-1.64c.83-.47.83-1.24-.02-1.61zM4.17.24L16.88 7.58l-2.89 2.89L4.17.24z"/></svg>
-      Google Play
-    </a>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-pill"><span class="pulse" aria-hidden="true"></span>Now available on iOS &amp; Android</div>
+      <h1>Automate Your <span class="l2">Weekly Meetups.</span></h1>
+      <p class="hero-sub">Group chats weren't built for organizing meetups. GroupThat was.</p>
+      <p class="hero-for">Made for
+        <span class="rotator" aria-live="off">
+          <span class="on">pickup basketball.</span>
+          <span>book clubs.</span>
+          <span>run clubs.</span>
+          <span>poker nights.</span>
+          <span>pickleball.</span>
+          <span>Bible study.</span>
+          <span>trivia teams.</span>
+        </span>
+      </p>
+      <div class="btn-row" id="download">
+        <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.dallinhull.groupthat&pli=1" class="btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.99.2l12.71-7.34-2.89-2.89L3.18 23.76zM.47 1.31C.17 1.63 0 2.12 0 2.74v18.51c0 .62.17 1.11.48 1.43l.08.07 10.37-10.37v-.24L.55 1.24l-.08.07zm19.44 7.97L17 7.65 14.07 10.6l2.93 2.93 2.93-1.64c.83-.47.83-1.24-.02-1.61zM4.17.24L16.88 7.58l-2.89 2.89L4.17.24z"/></svg>
+          Google Play
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-phones" aria-hidden="true">
+      <div class="hero-tilt">
+        <div class="iphone ph-back">
+          <div class="iphone-screen"><img src="assets/screens/live-headcount.webp" alt="" width="600" height="1300"></div>
+        </div>
+        <div class="iphone ph-front">
+          <div class="iphone-screen"><img src="assets/screens/one-tap-rsvp.webp" alt="" width="600" height="1300"></div>
+        </div>
+        <div class="hero-chip">
+          <span class="dot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span><b id="chipCount">8</b> of 10 are in<small>Thursday pickup &middot; 6:15 PM</small></span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-label="Groups that run on GroupThat">
+  <div class="marquee-track">
+    <ul><li>Pickup basketball</li><li>Book clubs</li><li>Run clubs</li><li>Poker nights</li><li>Pickleball</li><li>Bible study</li><li>Trivia teams</li><li>Supper clubs</li><li>Soccer leagues</li><li>Game nights</li><li>Golf foursomes</li><li>Climbing crews</li></ul>
+    <ul aria-hidden="true"><li>Pickup basketball</li><li>Book clubs</li><li>Run clubs</li><li>Poker nights</li><li>Pickleball</li><li>Bible study</li><li>Trivia teams</li><li>Supper clubs</li><li>Soccer leagues</li><li>Game nights</li><li>Golf foursomes</li><li>Climbing crews</li></ul>
+  </div>
+</div>
 
 <!-- PROBLEM STRIP -->
 <div class="problem">
@@ -658,50 +922,58 @@
   <div class="screens-grid">
 
     <!-- Screen 1: Auto Invites -->
-    <div class="screen-col">
+    <div class="screen-col" data-reveal>
       <div class="screen-label">
         <div class="screen-num" style="background:#4A90E2;">1</div>
         <div class="screen-title">Auto Invites</div>
       </div>
       <p class="screen-desc">Set your schedule once. GroupThat sends the invites automatically, every time.</p>
       <div class="phone-wrap">
-        <img src="assets/screens/auto-invites.webp" alt="GroupThat schedule review screen showing a weekly recurring meetup with automatic invites" loading="lazy" width="640" height="1180">
+        <div class="iphone">
+          <div class="iphone-screen"><img src="assets/screens/auto-invites.webp" alt="GroupThat schedule review screen showing a weekly recurring meetup with automatic invites" loading="lazy" width="600" height="1300"></div>
+        </div>
       </div>
     </div>
 
     <!-- Screen 2: One-tap RSVP -->
-    <div class="screen-col">
+    <div class="screen-col" data-reveal>
       <div class="screen-label">
         <div class="screen-num" style="background:#4FD1C5;">2</div>
         <div class="screen-title">One-tap RSVP</div>
       </div>
       <p class="screen-desc">"I'm In" or "I'm Out." Done in a single tap.</p>
       <div class="phone-wrap">
-        <img src="assets/screens/one-tap-rsvp.webp" alt="GroupThat meetup screen with I'm In and I'm Out RSVP buttons" loading="lazy" width="640" height="1180">
+        <div class="iphone">
+          <div class="iphone-screen"><img src="assets/screens/one-tap-rsvp.webp" alt="GroupThat meetup screen with I'm In and I'm Out RSVP buttons" loading="lazy" width="600" height="1300"></div>
+        </div>
       </div>
     </div>
 
     <!-- Screen 3: Live Headcount -->
-    <div class="screen-col">
+    <div class="screen-col" data-reveal>
       <div class="screen-label">
         <div class="screen-num" style="background:#FF7A6E;">3</div>
         <div class="screen-title">Live Headcount</div>
       </div>
       <p class="screen-desc">See who's coming in real time. Plan ahead with confidence.</p>
       <div class="phone-wrap">
-        <img src="assets/screens/live-headcount.webp" alt="GroupThat live headcount screen showing who is in, out, and undecided" loading="lazy" width="640" height="1180">
+        <div class="iphone">
+          <div class="iphone-screen"><img src="assets/screens/live-headcount.webp" alt="GroupThat live headcount screen showing who is in, out, and undecided" loading="lazy" width="600" height="1300"></div>
+        </div>
       </div>
     </div>
 
     <!-- Screen 4: Auto Mute -->
-    <div class="screen-col">
+    <div class="screen-col" data-reveal>
       <div class="screen-label">
         <div class="screen-num" style="background:#9F7AEA;">4</div>
         <div class="screen-title">Auto Mute</div>
       </div>
       <p class="screen-desc">Sitting out this week? We'll mute your notifications and bring you back automatically.</p>
       <div class="phone-wrap">
-        <img src="assets/screens/auto-mute.webp" alt="GroupThat mute notifications screen with options to mute until the next meetup" loading="lazy" width="640" height="1180">
+        <div class="iphone">
+          <div class="iphone-screen"><img src="assets/screens/auto-mute.webp" alt="GroupThat mute notifications screen with options to mute until the next meetup" loading="lazy" width="600" height="1300"></div>
+        </div>
       </div>
     </div>
 
@@ -713,23 +985,23 @@
   <div class="features-inner">
     <h2>Put your group on autopilot</h2>
     <div class="feat-grid">
-      <div class="feat-card">
-        <div class="feat-icon">✅</div>
+      <div class="feat-card" style="--accent:#4FD1C5;">
+        <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-5.3-8.2"/><polyline points="21 4 12 13 9 10"/></svg></div>
         <h3>Automated check-ins</h3>
         <p>"Who's in?" messages go out automatically every week — no more manually texting the group just to get a headcount.</p>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">👁️</div>
+      <div class="feat-card" style="--accent:#4A90E2;">
+        <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
         <h3>Instant visibility</h3>
         <p>See attendance at a glance. Know exactly who's coming before you ever have to ask a single follow-up question.</p>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">💬</div>
+      <div class="feat-card" style="--accent:#FF7A6E;">
+        <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="13" y2="13"/></svg></div>
         <h3>Smart messaging</h3>
         <p>Only the right people get updates. No more spamming everyone with logistics that only apply to half the group.</p>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">⚙️</div>
+      <div class="feat-card" style="--accent:#9F7AEA;">
+        <div class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
         <h3>Set it once</h3>
         <p>Configure your group one time and it runs itself. The same smooth, organized experience every single week.</p>
       </div>
@@ -739,15 +1011,20 @@
 
 <!-- WATCH -->
 <section class="watch-section">
-  <div class="watch-card">
+  <div class="watch-card" data-reveal="zoom">
     <div class="watch-pill">🎬 See It In Action</div>
     <h2>Create a group in minutes,<br><span class="l2">save hours every week.</span></h2>
     <div class="watch-embed">
-      <a class="watch-poster" href="https://www.instagram.com/reel/Dc4hfq2umHG/" target="_blank" rel="noopener" aria-label='Watch "Creating a Group" on Instagram'>
-        <span class="watch-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2D3748"><path d="M8 5v14l11-7z"/></svg></span>
-        <span class="watch-poster-label">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          Watch on Instagram
+      <a class="iphone" href="https://www.instagram.com/reel/Dc4hfq2umHG/" target="_blank" rel="noopener" aria-label='Watch "Creating a Group" on Instagram'>
+        <span class="iphone-screen">
+          <img src="assets/screens/auto-invites.webp" alt="" loading="lazy" width="600" height="1300">
+          <span class="watch-poster">
+            <span class="watch-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#2D3748"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="watch-poster-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Watch on Instagram
+            </span>
+          </span>
         </span>
       </a>
     </div>
@@ -826,6 +1103,46 @@
       }
     });
   });
+</script>
+<script>
+  // Homepage motion: rotating group type, live-headcount chip, and a gentle
+  // tilt of the hero phones toward the cursor.
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.documentElement.classList.add('js');
+
+    var words = document.querySelectorAll('.rotator > span');
+    var w = 0;
+    if (words.length > 1) setInterval(function () {
+      var cur = words[w];
+      cur.classList.remove('on'); cur.classList.add('off');
+      setTimeout(function () { cur.classList.remove('off'); }, 450);
+      w = (w + 1) % words.length;
+      words[w].classList.add('on');
+    }, 2400);
+
+    var chip = document.getElementById('chipCount');
+    if (chip) {
+      var n = 6;
+      setInterval(function () {
+        n = n >= 9 ? 6 : n + 1;
+        chip.textContent = n;
+        chip.classList.remove('bump'); void chip.offsetWidth; chip.classList.add('bump');
+      }, 2600);
+    }
+
+    var hero = document.querySelector('.hero');
+    var tilt = document.querySelector('.hero-tilt');
+    if (hero && tilt && window.matchMedia('(hover: hover)').matches) {
+      hero.addEventListener('mousemove', function (e) {
+        var r = hero.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        tilt.style.transform = 'rotateY(' + (x * 10).toFixed(2) + 'deg) rotateX(' + (-y * 8).toFixed(2) + 'deg)';
+      });
+      hero.addEventListener('mouseleave', function () { tilt.style.transform = ''; });
+    }
+  })();
 </script>
 </body>
 </html>

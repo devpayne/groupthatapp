@@ -220,7 +220,7 @@
       .btn-plan { min-height: 44px; padding: 4px 8px; border-radius: 12px; font-size: 15px; }
 
       /* column labels stay pinned while scrolling the table */
-      .col-labels { display: grid; position: sticky; top: 0; z-index: 5; background: var(--gray-lt); }
+      .col-labels { display: grid; position: sticky; top: var(--nav-h, 0px); z-index: 5; background: var(--gray-lt); }
       .col-labels .cell, .col-labels .pcell {
         padding: 12px 0 10px; border-radius: 14px 14px 0 0;
         font-size: 13px; font-weight: 700; color: var(--charcoal);
@@ -284,6 +284,8 @@
     }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>
+  <link rel="stylesheet" href="assets/motion.css">
+  <script src="assets/motion.js"></script>
 </head>
 <body>
 
