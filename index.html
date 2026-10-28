@@ -323,40 +323,218 @@
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.65); transform: translateY(-2px); }
 
-    /* ── PROBLEM STRIP ── */
+    /* ── PROBLEM: animated group chat ──
+       A scripted group chat plays inside an iPhone; each message is tagged
+       with the pain point it illustrates (data-pain) and that card lights up. */
     .problem {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
       background: var(--gray-lt);
-      border-top: 1px solid #e2e8f2;
       border-bottom: 1px solid #e2e8f2;
-      padding: 44px 48px;
+      padding: 96px 48px;
+    }
+    .problem::before {
+      content: '';
+      position: absolute;
+      width: 560px; height: 560px;
+      right: -120px; top: -160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,122,110,0.18) 0%, rgba(255,122,110,0) 65%);
+      z-index: -1;
     }
     .problem-inner {
-      max-width: 900px;
+      max-width: 1080px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 300px;
+      column-gap: 88px;
+      align-items: center;
     }
+    .problem-eyebrow {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .problem-eyebrow::before { content: ''; width: 28px; height: 2px; border-radius: 2px; background: currentColor; }
     .problem-title {
       font-family: 'Poppins', sans-serif;
-      font-size: clamp(18px, 2.2vw, 24px);
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      text-align: center;
+      font-size: clamp(34px, 4.6vw, 56px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
       color: var(--charcoal);
-      max-width: 900px;
-      margin: 0 auto 28px;
+      margin-bottom: 36px;
     }
-    .prob-item { padding: 0 36px; text-align: center; }
-    .prob-item + .prob-item { border-left: 1px solid #dce4ef; }
+    .prob-list { display: grid; gap: 14px; }
+    .prob-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 18px;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid #e2eaf5;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(.2,.7,.2,1), box-shadow 0.45s, border-color 0.45s;
+    }
+    .prob-item::before {
+      content: '';
+      position: absolute; left: -1px; top: 18px; bottom: 18px;
+      width: 3px; border-radius: 3px;
+      background: var(--coral);
+      transform: scaleY(0);
+      transition: transform 0.45s cubic-bezier(.2,.7,.2,1);
+    }
+    .prob-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--coral);
+      background: rgba(255,122,110,0.12);
+      transition: transform 0.45s cubic-bezier(.2,.7,.2,1), background 0.45s, color 0.45s;
+    }
     .prob-label {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--coral);
-      margin-bottom: 10px;
+      margin-bottom: 2px;
+      display: block;
     }
-    .prob-text { font-size: 20px; font-weight: 600; color: var(--charcoal); line-height: 1.35; }
+    .prob-text { display: block; font-family: 'Poppins', sans-serif; font-size: 19px; font-weight: 700; color: var(--charcoal); line-height: 1.3; }
+    /* While the chat plays, the card matching the latest message lights up */
+    .problem.is-playing .prob-item { opacity: 0.55; }
+    .problem.is-playing .prob-item.on {
+      opacity: 1;
+      transform: translateX(10px);
+      border-color: rgba(255,122,110,0.45);
+      box-shadow: 0 18px 40px -16px rgba(255,122,110,0.35);
+    }
+    .prob-item.on::before { transform: scaleY(1); }
+    .prob-item.on .prob-icon { background: var(--coral); color: var(--white); transform: rotate(-6deg) scale(1.06); }
+    .problem-next {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 28px;
+      font-weight: 700; font-size: 15px;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .problem-next svg { transition: transform 0.2s; }
+    .problem-next:hover svg { transform: translateY(3px); }
+
+    .problem-phone { position: relative; }
+    .problem-phone .iphone { box-shadow: 0 40px 80px -28px rgba(20,30,50,0.5), 0 0 0 1px #0b0c0f, inset 0 0 0 1.5px rgba(255,255,255,0.14); }
+    .problem-phone .iphone { transform: rotate(2deg); }
+
+    /* Chat UI — sized in container units so it scales with the phone */
+    .chat {
+      container-type: inline-size;
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      background: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      color: #111;
+    }
+    .chat-status {
+      height: 13cqw; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1cqw 8cqw 0 9cqw;
+      font-size: 4.6cqw; font-weight: 700;
+    }
+    .chat-status i { display: inline-flex; align-items: flex-end; gap: 0.6cqw; height: 3cqw; }
+    .chat-status i b { width: 0.9cqw; background: #111; border-radius: 1px; }
+    .chat-status i b:nth-child(1) { height: 35%; } .chat-status i b:nth-child(2) { height: 60%; }
+    .chat-status i b:nth-child(3) { height: 80%; } .chat-status i b:nth-child(4) { height: 100%; }
+    .chat-status .batt { width: 6.5cqw; height: 3.2cqw; border: 0.35cqw solid #111; border-radius: 1cqw; padding: 0.35cqw; margin-left: 1.6cqw; }
+    .chat-status .batt::before { content: ''; display: block; height: 100%; width: 70%; background: #111; border-radius: 0.4cqw; }
+    .chat-head {
+      flex-shrink: 0;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      padding: 1cqw 4cqw 3cqw;
+      border-bottom: 1px solid #ececf0;
+      background: #f8f8fa;
+    }
+    .chat-back { display: flex; align-items: center; gap: 1cqw; color: var(--blue); font-size: 4.4cqw; }
+    .chat-badge {
+      min-width: 7cqw; padding: 0.4cqw 1.8cqw;
+      border-radius: 99px;
+      background: var(--blue); color: #fff;
+      font-size: 3.4cqw; font-weight: 700; text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+    .chat-badge.bump { animation: gt-bump 0.45s ease; }
+    .chat-title { text-align: center; }
+    .chat-avatars { display: flex; justify-content: center; margin-bottom: 1cqw; }
+    .chat-avatars span {
+      width: 7.5cqw; height: 7.5cqw; border-radius: 50%;
+      border: 0.5cqw solid #f8f8fa;
+      margin-left: -2cqw;
+      font-size: 3.2cqw; font-weight: 700; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .chat-avatars span:first-child { margin-left: 0; }
+    .chat-name { display: block; font-size: 3.8cqw; font-weight: 600; }
+    .chat-sub { display: block; font-size: 2.9cqw; color: #8a8a8e; }
+    .chat-body {
+      flex: 1; min-height: 0;
+      overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 3cqw 4cqw 2cqw;
+    }
+    .msg {
+      display: grid;
+      grid-template-rows: 1fr;
+      transition: grid-template-rows 0.35s ease;
+    }
+    .msg > div {
+      min-height: 0; overflow: hidden;
+      display: flex; align-items: flex-end; gap: 2cqw;
+      padding-top: 1.6cqw;
+    }
+    .msg .av {
+      width: 7cqw; height: 7cqw; border-radius: 50%; flex-shrink: 0;
+      font-size: 3.4cqw; font-weight: 700; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .msg .who { display: block; font-size: 3cqw; color: #8a8a8e; margin: 0 0 0.6cqw 3cqw; }
+    .msg .bubble {
+      display: inline-block;
+      max-width: 74cqw;
+      padding: 2cqw 3.4cqw;
+      border-radius: 4.6cqw;
+      background: #e9e9eb;
+      font-size: 4.4cqw; line-height: 1.3;
+    }
+    .msg .bubble.emoji { background: none; padding: 0 1cqw; font-size: 8cqw; line-height: 1; }
+    .msg.out > div { justify-content: flex-end; }
+    .msg.out .bubble { background: var(--blue); color: #fff; }
+    .chat-input {
+      flex-shrink: 0;
+      margin: 1cqw 4cqw 8cqw;
+      height: 9cqw;
+      border: 1px solid #dcdce0;
+      border-radius: 99px;
+      display: flex; align-items: center;
+      padding: 0 4cqw;
+      font-size: 3.6cqw; color: #b0b0b5;
+    }
+    .typing { display: inline-flex; gap: 1cqw; padding: 2.6cqw 3.4cqw; }
+    .typing i { width: 1.6cqw; height: 1.6cqw; border-radius: 50%; background: #9a9aa0; animation: gt-typing 1s infinite ease-in-out; }
+    .typing i:nth-child(2) { animation-delay: 0.15s; } .typing i:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes gt-typing { 0%, 60%, 100% { opacity: 0.35; transform: none; } 30% { opacity: 1; transform: translateY(-0.8cqw); } }
+    /* Hidden until played (only once the script is running) */
+    .chat.is-live .msg { grid-template-rows: 0fr; }
+    .chat.is-live .msg .bubble, .chat.is-live .msg .av, .chat.is-live .msg .who { opacity: 0; transform: translateY(2cqw) scale(0.9); transition: opacity 0.3s ease, transform 0.35s cubic-bezier(.2,.9,.3,1.3); }
+    .chat.is-live .msg.out .bubble { transform-origin: right bottom; }
+    .chat.is-live .msg .bubble { transform-origin: left bottom; }
+    .chat.is-live .msg.shown { grid-template-rows: 1fr; }
+    .chat.is-live .msg.shown .bubble, .chat.is-live .msg.shown .av, .chat.is-live .msg.shown .who { opacity: 1; transform: none; }
+    .chat.is-live.fade .chat-body > * { opacity: 0; transition: opacity 0.5s; }
 
     /* ── APP SCREENS ── */
     .screens-section {
@@ -774,10 +952,17 @@
       .hero-phones { height: 440px; max-width: 400px; width: 100%; margin: 0 auto; }
       .hero-phones .iphone { width: 188px; }
       .hero-chip { left: 0; bottom: 40px; }
-      .problem { padding: 36px 24px; }
-      .problem-inner { grid-template-columns: 1fr; gap: 28px; }
-      .prob-item + .prob-item { border-left: none; border-top: 1px solid #dce4ef; padding-top: 28px; }
-      .prob-item { padding: 0; }
+      .problem { padding: 64px 24px; }
+      .problem-inner { grid-template-columns: 1fr; }
+      .problem-left { display: contents; }
+      .problem-copy { order: 1; } .problem-phone { order: 2; } .prob-list { order: 3; }
+      .problem-copy { text-align: center; }
+      .problem-eyebrow { justify-content: center; }
+      .problem-title { margin-bottom: 32px; }
+      .problem-phone { width: 240px; margin: 0 auto 36px; }
+      .prob-item { padding: 18px 20px; }
+      .problem.is-playing .prob-item.on { transform: scale(1.02); }
+      .problem-next { display: flex; justify-content: center; }
       .screens-section { padding: 64px 24px; }
       .watch-section { margin: 8px auto 64px; padding: 0 16px; }
       .watch-card { padding: 48px 24px 44px; border-radius: 24px; }
@@ -800,7 +985,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .hero-copy > *, .hero-phones, .hero-phones .iphone, .hero-chip, .hero h1 .l2,
-      .marquee-track, .benefits, .watch-play::before { animation: none !important; }
+      .marquee-track, .benefits, .watch-play::before, .typing i { animation: none !important; }
       .hero-phones .iphone, .hero-chip { transform: rotate(var(--rot)); }
       .marquee-track { flex-wrap: wrap; width: auto; justify-content: center; }
       .marquee-track ul[aria-hidden] { display: none; }
@@ -894,27 +1079,66 @@
   </div>
 </div>
 
-<!-- PROBLEM STRIP -->
-<div class="problem">
-  <h2 class="problem-title">Sound familiar?</h2>
+<!-- PROBLEM: a group chat plays out the pain points -->
+<section class="problem" aria-labelledby="problemTitle">
   <div class="problem-inner">
-    <div class="prob-item">
-      <div class="prob-label">The Problem</div>
-      <div class="prob-text">Hard to track who's "in" or "out"</div>
+    <div class="problem-left">
+    <div class="problem-copy" data-reveal>
+      <div class="problem-eyebrow">The group chat way</div>
+      <h2 class="problem-title" id="problemTitle">Sound familiar?</h2>
     </div>
-    <div class="prob-item">
-      <div class="prob-label">Every Week</div>
-      <div class="prob-text">Endless text reminders to the whole group</div>
+
+    <ul class="prob-list" role="list" style="list-style:none" data-reveal>
+    <li class="prob-item" data-pain="1">
+      <span class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M17 8.5a2.5 2.5 0 1 1 3 2.45c-.6.15-1 .65-1 1.25V13"/><line x1="19" y1="16.5" x2="19" y2="16.5"/></svg></span>
+      <span><span class="prob-label">The Problem</span><span class="prob-text">Hard to track who's "in" or "out"</span></span>
+    </li>
+    <li class="prob-item" data-pain="2">
+      <span class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><polyline points="15 7 17 9 15 11"/><path d="M7 11V10a1 1 0 0 1 1-1h9"/></svg></span>
+      <span><span class="prob-label">Every Week</span><span class="prob-text">Endless text reminders to the whole group</span></span>
+    </li>
+    <li class="prob-item" data-pain="3">
+      <span class="prob-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><line x1="12" y1="7.5" x2="12" y2="12.5"/><line x1="12" y1="16.5" x2="12" y2="16.5"/></svg></span>
+      <span><span class="prob-label">The Result</span><span class="prob-text">Missed updates and confusion for everyone</span></span>
+    </li>
+      <li><a class="problem-next" href="#how-it-works">There's a better way <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></a></li>
+    </ul>
     </div>
-    <div class="prob-item">
-      <div class="prob-label">The Result</div>
-      <div class="prob-text">Missed updates and confusion for everyone</div>
+
+    <div class="problem-phone" data-reveal="zoom" role="img" aria-label="A busy group chat: people reply maybe, thumbs-up and 'depends', the organizer keeps posting reminders, and others ask if it's tonight and what the plan is.">
+      <div class="iphone">
+        <div class="iphone-screen">
+          <div class="chat" aria-hidden="true">
+            <div class="chat-status"><span>5:41</span><span style="display:flex;align-items:center"><i><b></b><b></b><b></b><b></b></i><span class="batt"></span></span></div>
+            <div class="chat-head">
+              <span class="chat-back"><svg width="10" height="16" viewBox="0 0 10 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:2.6cqw;height:auto"><polyline points="8 2 2 8 8 14"/></svg><span class="chat-badge">38</span></span>
+              <span class="chat-title"><span class="chat-avatars"><span style="background:#FF7A6E">M</span><span style="background:#9F7AEA">J</span><span style="background:#38B2AC">D</span><span style="background:#ED8936">S</span></span><span class="chat-name">Thursday Hoops</span><span class="chat-sub">14 people</span></span>
+              <span></span>
+            </div>
+            <div class="chat-body">
+          <div class="msg out" data-pain="2"><div><span class="bubble">Who's in for Thursday? 🏀</span></div></div>
+          <div class="msg" data-pain="1"><div><span class="av" style="background:#FF7A6E">M</span><span><span class="who">Marcus</span><span class="bubble">maybe</span></span></div></div>
+          <div class="msg" data-pain="1"><div><span class="av" style="background:#9F7AEA">J</span><span><span class="who">Jen</span><span class="bubble emoji">👍</span></span></div></div>
+          <div class="msg" data-pain="1"><div><span class="av" style="background:#38B2AC">D</span><span><span class="who">Dev</span><span class="bubble">depends what time</span></span></div></div>
+          <div class="msg" data-pain="1"><div><span class="av" style="background:#ED8936">S</span><span><span class="who">Sam</span><span class="bubble">in! can I bring my cousin?</span></span></div></div>
+          <div class="msg" data-pain="1"><div><span class="av" style="background:#4A90E2">C</span><span><span class="who">Chris</span><span class="bubble">who's going so far??</span></span></div></div>
+          <div class="msg out" data-pain="2"><div><span class="bubble">Reminder: Thursday 6:15 at 37th St. Need a headcount!</span></div></div>
+          <div class="msg" data-pain="3"><div><span class="av" style="background:#48BB78">A</span><span><span class="who">Alex</span><span class="bubble">wait is this tonight?</span></span></div></div>
+          <div class="msg" data-pain="1"><div><span class="av" style="background:#FF7A6E">M</span><span><span class="who">Marcus</span><span class="bubble">actually out, sorry</span></span></div></div>
+          <div class="msg out" data-pain="2"><div><span class="bubble">Bumping this ⬆️ who's in??</span></div></div>
+          <div class="msg" data-pain="3"><div><span class="av" style="background:#ED64A6">T</span><span><span class="who">Taylor</span><span class="bubble">just saw this. what's the plan?</span></span></div></div>
+          <div class="msg" data-pain="3"><div><span class="av" style="background:#38B2AC">D</span><span><span class="who">Dev</span><span class="bubble">did we ever decide on a time?</span></span></div></div>
+            </div>
+            <div class="chat-input">iMessage</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- APP SCREENS -->
-<section class="screens-section">
+<section class="screens-section" id="how-it-works">
   <div class="section-eyebrow">How it works</div>
   <h2>Up and running fast.</h2>
   <p class="screens-intro">Four simple moments. Zero chasing. Same great experience every week.</p>
@@ -1142,6 +1366,70 @@
       });
       hero.addEventListener('mouseleave', function () { tilt.style.transform = ''; });
     }
+  })();
+
+  // Problem section: play the scripted group chat while it's on screen,
+  // lighting up the pain point each message illustrates.
+  (function () {
+    var section = document.querySelector('.problem');
+    var chat = section && section.querySelector('.chat');
+    if (!chat || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var body = chat.querySelector('.chat-body');
+    var msgs = Array.prototype.slice.call(body.querySelectorAll('.msg'));
+    var items = section.querySelectorAll('.prob-item');
+    var badge = chat.querySelector('.chat-badge');
+    var typing = document.createElement('div');
+    typing.className = 'msg';
+    typing.innerHTML = '<div><span class="bubble typing"><i></i><i></i><i></i></span></div>';
+    var i = 0, unread = 38, timer = null, running = false;
+
+    function light(pain) {
+      items.forEach(function (el) { el.classList.toggle('on', el.getAttribute('data-pain') === pain); });
+    }
+    function reset() {
+      msgs.forEach(function (m) { m.classList.remove('shown'); });
+      if (typing.parentNode) typing.parentNode.removeChild(typing);
+      i = 0; unread = 38; badge.textContent = unread;
+    }
+    function step() {
+      if (!running) return;
+      if (i >= msgs.length) {
+        timer = setTimeout(function () {
+          chat.classList.add('fade');
+          timer = setTimeout(function () { reset(); chat.classList.remove('fade'); step(); }, 600);
+        }, 2600);
+        return;
+      }
+      var m = msgs[i];
+      var incoming = !m.classList.contains('out');
+      if (incoming) {
+        // show a typing bubble first, in the slot the message will take
+        body.insertBefore(typing, m);
+        typing.classList.remove('shown'); void typing.offsetWidth; typing.classList.add('shown');
+      }
+      timer = setTimeout(function () {
+        if (typing.parentNode) typing.parentNode.removeChild(typing);
+        m.classList.add('shown');
+        light(m.getAttribute('data-pain'));
+        if (incoming) {
+          unread += 1 + (i % 3);
+          badge.textContent = unread;
+          badge.classList.remove('bump'); void badge.offsetWidth; badge.classList.add('bump');
+        }
+        i++;
+        timer = setTimeout(step, incoming ? 650 : 1000);
+      }, incoming ? 650 : 200);
+    }
+
+    chat.classList.add('is-live');
+    section.classList.add('is-playing');
+    reset();
+    new IntersectionObserver(function (entries) {
+      var visible = entries[0].isIntersecting;
+      if (visible && !running) { running = true; step(); }
+      else if (!visible && running) { running = false; clearTimeout(timer); }
+    }, { threshold: 0.35 }).observe(section);
   })();
 </script>
 </body>
