@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAXwklEQVR42u1de5BU1Zn/feece7tv90zPg8cMCCiggoIIJoobYwYqwbcbk6oxr3IrWtHNoyxFSTZblezMVLZqK5uk0K1skpLdWJVsXsNuNNEEkGwR1LUUFA2iARV5P2Zg3jP9uPee8+0ft2/Tg6DTw8B0D/eraqZq6Nec3+983+/7znfOIYyFMVNT65/l5rblfvirphZW1dO6r4afWwTIq4zxlrDRKUFyHrNBZO81IgHDehcJ2S+E9Sqgt0HFtg8cqd+6uY2KxnaT2ty6TIOIz/gzxxL4mx59K6ZU3Q1svE+CcQ1gFgorTkQCrH0wGxjfjZB+HxPKBpEASRWMl5dlQOwAYQsJ63e+3/PM+gcuzY0VEUZNgKaWTSoE/vZHjjYYSV8B+LPSjs0jkjBeFtrLgsEGDAaBKPiXIpjfd1IxE7gwZiAhrTiEFQezhnZzuwD6tdD846cebOw4GYuzTwBmyvsrXvG9d6ba8eRXQfiyspMN2stAuxlDJAyDBYFEhOgYcAJsCGSYjZC2I6TlwHeHOsD4iZsd+tHGr1/cWYxLSR6nlCc3t7MM5jHxrY8evMeOJV614lUtMNzgpXt87WUNkRAAVAT+GGqDYCwVkRDayxov3ePDcIMVr2qxY4lXb3304D0hLs3tLM+KB2huZ7n2TtKf+O5fp9tOzU8tp/pGPzsA9j0fgIxc+7kPFQA0KUupeDW8zMAGN9N3z5/+4bLDIVZjRoCmTaw2Lyf/xtXv3qiU87i0nWl+ui8CvoyIoBI1SruZI76fuXvDyjkbQszOOAS0tLDYvJz8m1fvvTfm1K4nYJqX7tUgUhH4ZZE7EoiUl+7VBEyLObXrb169997Ny8lvaWFxBgRgamrZpNrawLc8crBFxZKP+bm00b5riISMRr7saghS+67xc2mjYsnHbnnkYEtbG7ipZZMCmEoOAU0trDa3kX/z6j2tTt2MlmzvER/MkcuvhJBApOO101Sm52DbupWzW0MsR0yAUETcvHrvvSqWfEy7WQ9sIpdfUSQQvrTjlp8bum/dyovWnE4Y0mnB//7uFVZV3TN+bsjAmKiAU4kkEIJVLCm8wZ4b1q2au/FUJBgOagsLtJG5/ZGjDVrovxCJqcZ3mSjK6SuUA0Yom5hNpzTyyqcebOwIMT6lCGxeAGppYaHZ/bmKJRuMnzMR+BWdIAjj54yKJRs0uz9vaWHRvGD4pBcnu/6XavbfZVfVrfAzfX6k9idGduBn+ny7qm7FSzX771p7J+niaiHlfQWhtZXumHxvnWewA1JN5WDVLpr9E8MMKRvQfqclsPDJ42t60NrKIAoKBc1rIdDWZnK+d7+VqG1kL2ci8CeUCfZyxkrUNuZ87360tZnmtQG+BGYCAbd9//AkY5mdRLKetYdI9U88RUjSArPuFp6Y//Sq6V1gQDS1QgLERnlfsxO1k4x2TQT+xFSERrvGTtROMsr7GkDc1ApJAFPzDw7EByXtkJY9O+hAiZT/BHUDRlhx0p67p0rzwrUPz8wKgDgtabntVM3RbiYCf2K7AaHdDNtO1Zy0pOVAXgQy8CmQZCKKujXPg0gAkszApwCAmlr2xJO18hVpO5drN20QFX4muhg00k4I7WbeHOrVH1KxlFxEUs3TXoYj8M8LFyC0l2GSal4shUXCIlosLFty0FkS2fmREbKwbGkRLRZMuJYQSoHIzhcOEASYcK0Am4VsfIAQ5f7nTRgAsfEBNgsFgBSzATgiwPkz/0H57XkpQVLOM74Liqp/51MqSMZ3QVLOUxN5oyYBCGldTO/3k7snP4/z6mgiCiRmAzURAScCDAPaAJ7P0IZhTACioPA5w0VPADaDOXgtUfBcJQhKEpQIfhf+/0SxCUEAQQH6vgayroE2gK0ItY7AlGoLDSmJhhqF+qREjSOQjAnELYISBEEEwwxPA1nPYChn0Jsx6BrU6Oz3caTPx/FBjf6MgacZliTEFEHJiUEGVcmzXYhglg/mDJiByVUSV81KYNHMGOY32phZb6EuIXEm6kYboGtQY1+XhzcO57D9YBbvdLroSxtYiuBYwZtXKhEqkgBSBLN9IGOQjAl8ZG4Cy+cnsHhWHJOr3tvFZnh43KfCP+9Rx8NiPVHwWVNTElNTElfPjgOowcEeHy++m8GmnUPYecQFg5G0RUUSgW55ZH/FfGVBAUCDWYOUI/CJy5O4dVE15k6xhsXyMIbTSaJu9GIp+FzmwOvQCb5gy54MfvvKALbuzUIS4NgEbSIPcFZmfdZjGAZuXFiFL1ybwqx6axjoocCTY5zQhmQKkQ8/Twpg6WwHS2c7eO7tNB5/vg+7O12kHHEig4gIMDbg92cMZk2y8NVldbh2rhO4W3NC9ctzWMUo/jzDAS+uvySBD13o4D+f68Fvtw3AsQSkKP+QUPYEEAT0pg0+flkCD66YhBpHFAZdiPL4fiEZEzbh/o/XY15jDKs3dheyhnImgSp38PuzBn/3kRp86fragiqXZbhoLUTg8o0BbliQxJQqiX/6/TF4fnmTQJQz+ANZg79vqsOXrq8tKPkzBT+M36d6nGncpny40gZYcmEc37ljCgQForBcC+1lSYAw5n/xulp8fmmqMICjGUTOVwTDGRhW+E71CMXeya8ZzffXBlg8M45v3DQJWc+U7UqbKkfw+zIGtyyqwhevq4E2w1OvUlM3cZJg601rdA9pDOYMMi7DMMMShERMoMYRmFyl4NhUeE3x+4yGBMvmJ7CrI4VfvNiP2oQouxSxrAggCEi7jHkNNh74RH2Qd1Pp4Jui13UPaWzbl8W2/Vns7vRwfNBH2mW4PoOZwQhaIYQAHIuQciRm1SssmhHD0jkO5kyxC14BJdYVRD4LuPujtdi2L4fdx1w4VnnpgbIrBPmG8ejnGjG/0S4AWcqsDwE60O3ht9sG8PzbaRwbCLbEWzJY2Ald/klFwPwCEsPzGb4BkjGBRTNi+PRV1Vg6xxlGrlLJ+NqBLFb9phNxm1BOzXdl4wGkCNK9L1xbg/mNdslqPxxobYBfvNiHtS/3oz9jkIgJpJyiMi2fAPtUIs6SBFsSKP9eW/dmsHVvBh+9OIEvL6vD9FoFY0aegor8yuTimXF8bF4Cm3YOoSouYMokFJSFCCQCXJ8xvVbhc0tTBddfKvhdQxrf+O8OrHm2F9oANQkBmQdSm5Gp/DBLCGN10hZI2gLPvpXG/b88ii17MoVFqFLtzqtTULK8PEBZECCM/Z+6qhqpuCjU8kfq9gUBxwY0VrV34OW9WdQnRcEbnOlYhyliyhEYzBl864ljeP7t9IirfOFTfA3Mb7SxdI6DdI5LFpUTlgCEYPY31ijcvLCqJMUdzugh1+DbT3Zi73EPtQkB34x9HV4bwJYEKQj//HQX3jycK7j309YaTL5iSYDKL1IumRmHKSMXMO4aQAggk2XcdmUCqXyZtxQCCAH88H978OYhF3VVAr4+e9/VMGAJIO0x/nV9F/79C41I2KLg0os7icLFI08z3upw8fLeLF7Zl8H+Lh/JmCibTGDcCWAYiFmEj1+WKGnWmjz4z7+dxh9fH0Rt8uyCX/AEDCRtwu5OD7/a0o8vXV9bEKxh7aAvY/DGoRy27s1g+4EcDvR4yHpBSdhWVDbuf9wJQATkPMacKTYubbBLWr8nADmf8fj/9cE+x8LKN0B1XOD3rw3g01dVoz4pcajHx+uHstiyJ4s3D+fQ2e9DMxBTAehxi8qyhWxcCSAoAPGqC2OQgkac+oXP+/OuNN7pdFHjnPsKmxRAxmV8b30XCITXD2XRnzUgAuKKkIyJQnMqc+A5ytHGlQDMQdftlTPjhVk9UuIwA+u2D0KJ8UmrwtC1ZU8WzEDcItQUNYKENYdyt3EjAOVdaW1C4OKpdiEkjDTn393pYufR8S2tMgc9AMDw2kEl2filgXmFPK1WYVJSjpgA4WzfsieLtGvGvSnEVHhruBjPD/Y1Y2adVYiVI3X/APD6oSyUAKJN7RXsAQwDM+rUsJn9QbOfCEi7Bvu6PFhlVlaNCFBSAA1mc0ONKuUlAICjfT56hkxQV48wrEwCMAApCJOqRh7/Q+vo18h4pqwKKhEBRqGgLRkUVEp5DQAcG/BLWjCKrAzTQMPB4opjiZJqAADQmzFjHvvHahdRKX//eUsAAmAAyPxO21ItnRvbJksC4Bk+J2sJocUUlYUHG9dKoCRAidKAAoLy8VgxQBAwmGPcekUSNyysOif7DrRhrN7YjY4+H5Ya30xm3AgQpHQEUYqSo7F3n0RBH+IFdRYWzYids78/XibNoeNXCqbgXqPRNEeMtecMm1LCcu658AAc9QOUXj/noIcbtqKzQkhBwRWLZzu95DLKXsYtDSQE4Lt+6VOhuAsnsgokAOdnnKcZWc8UfjdSC9u8I6tgDyAIcDVjMFf6VJ5cJSGjhaDK1wDaMHqGdJFb+OA4DQANKQlbijFfB+Cix3gL04mvAfJ9+50D/ohDQDjIjTUWUo6A1mM38OHOYBmeLVTiI/IAoxz0Q71+aakjgBpH4II6hdcP5pAYgyVhQqhHeNRpYNyiiAAludt8P+DBbi9wRSMcdJMH6PLpMWzblw0uODsDAuj8JtA/bh/Epp3pkUSiYYT0NKMuIfGDz0yFY4mSXn9+EwCAkoRDPT4GcwZVsZENXqgDPnxRHL/Z0j8mQpAIGHIZA1m/5Nd5msuqsFNRHsASwPEhjf1dHi6fHhu2vfv9sgcAWDA9hln1Fg71erDHoJ4uCJAlFpgoLwAsWbkqYFwTaiGCjSE7DuUKpBip244pwrL5DrLe2G20ZB79IyLAqHUAsG1fdtjsHslsBYBbrgh25ZzLZdyoEDSGZhiIWwJ/Peqis98vHMc+EtdrGJhSLXHHkmoM5ExJy8qRlQkBgGDbdO+QxgvvZAqkGGnqxgx85upqXDLVRtrlqEewEgkQ9AYS/vTXoZK2hofZn2MLPHRDfcErnOsum/D7ckSA0YcBxya8eSSHV/dnAyDNyAffMLDwghgeumESBnOm0G5+ti08FDLtMogAVaEdquUTOZnQvrX/xOiWMAO1AW5amMRDK+qRdhme5rPW1BHeIaAZ6B4yuLTBxrdum4xYfvt3pdGgLE4JMwwkY4Ste7J46d0Mls5xSgoHUgRe45NLqlFfJbH6mW50D2lUx0XBo/AZgh7uSM75Qcl4SrXE566pxZ1Xp4K9/6jMNvWyOihSCuA/nuvFklnxwq6fEW8Zz5Pg+ksSmDvFxppne/H822l4muHYApYsyvWLgvawz6ATP0IwtQlAd32GEoQLJ1lYNj+BW66oKtxOMprzDCMCnEYL7Drq4r9e7MM9H60teWEmPJlzeq1Cy99OxmsHsnjqL4PYti+LniEdlJ9FcAOYEDTs5o/gpO/gdjE//xMUdB/NqrdwxYwY/maOgyWz4oWWNGMAEqWDr+SJ208iAhSZNkG3z69e6seVM+P40IXx0klQVEtYPDOOxTPj6Oz38ZeDObxxKIf93R6OD2gMuQa+BgwzBBGkAGJKIOVITKqSmFGnMGeKhUsaYrhwkoIqQlmb/AHTovS/LzwQszdjhr3neFnZHRUbLrCk4hL/9vkGTKtR0Dy6G0HCmsLJ45z1GGnX5K+gCQhg528Ac2xxyhkdegSi0Qm9EPzjgxrffuIY3ul0y6I1vCwvjZL51bnZky384DMNwS0hZvQ3hBQukkLgsmkExCk+HHq0oBc+O/83vd3h4jtPHcfBXg9JuzyOiivLAqrOZwXvHvPwj//TiZ60HvXxrMWpW3jsfHgD2HseRWFEivxrzgD88J4DScD6HYN4qL0DR/p8VJXROYFlW0HXBqiKE3YeyeHh33Rif7dXOIN/LDqACjObznyWny70hC7/X/7Qhe+u64Kvg86hcjpLqOzvDQyrbam4wIMr6vGxSxPDYmrZ1LGKrpIDgkziD9sH8csX+9HR76M6Lgqep6w0VyVcHCnywtDTwO2Lq3D3dbWoye8NGO2NImMCeggon9An2gDPvjWE9pf78ebh4BQzW5XvZZIVcW+g4aB9zJLAE9sGsHVPFp+9JoUbFyRP5OTFou0sz/QQeClOdAX1ZQyefSuNP24fxM6jOUhBhSvuyvn4uIq6OjYMCTmPkfUZlzbYuG1RFZrmJVGbEO9R8cU3ftIoZjeKwA4LTcXv4+mgm+m5t9J4YXcGR/t8KFlZF0pXHAHCWS4oOKrV1cFR80vnOLhuroPLp8dOeexMMZCni8N0ilLwydY1qLHrqItX9mXx2oEs9nV5Qbk57+or7Ur5iiTAyURwfUbGC2r1U1MS8xpsXDY9houn2pheq1CXkCX37fuGMZAx6BzQ2N/tYXenh7c7ctjX5aF7yEAzFw6CFvTeG8ojAowDEZiD/YauH2zwsCShKiZQkxCYlJSoSQjUOBJJWyBmUUGxh7uU067BQNYEpdq0Rm9aYyBnkPM4X8MPAFcCww6CrmRTmABWfBp38aVPzEGcPtrn41CPD8P8HtCKVwNDzSBEQA4lCJYg2A4VWtAKLn6CbExVmGB28nKvyB8oQfno/kFr9synEIEGE9YUkQBP4L+wGEhg4szcsQmdAoK13iWUDeZot/35YszMQtlgrXcJAP0ULJFFBDhvpj6YSABAvwCJHSQUwBEBzh8XACahABI7BDFeZBigss85iKxEH8AwIMaLwmN+zXiuJoqOXj5/xB+R8VztMb8mcv16O2t/l7QcmtDpQGShAjTScoi1vyvXr7eLzW2zsyB6QVgxBiEiwMQXgCbAml7Y3DY7K/LB/wmwJmaO9thO/BRQgDUR8AQACIApoXmTmxl8V9oOTey613kPv5G2Q25m8N2E5k0Ak2hqgVz78KwMQf9M2QmKCkITevazshNE0D9b+/CsTFMLJIGZQMBt3z88yVhmJ5GsZ+0FZ7lHNqHQJ2mBWXcLT8x/etX0LjAgQMTN7RBPr7rgOBv/h5aTIgDRoSsTz7TlpIiN/8OnV11wvLk9wJ7y7CC0ttIdk++t8wx2QKqp7Lt5jRDZBDBDyga032kJLHzy+JoetLYyiPKqn4ibF7TSk/fP6NJaf9OKJUUkBieW+LNiSaG1/uaT98/oal7QSiDifAZ4wprbWV7+Bnhr7YH1KpFa4aV7NZGQ0QBWcug32krUSj/dv/Hq3pk3vbkAtPZOKoT4YS5+7RvgtjYykuy7/NxQh1AxwVF1sJJ1nxEqJvzcUIck+662NjJr3xi+6Dc8xreRaW5n+dSDjR3sZu+SVoxIiOByn8gqT/ULAWnFiN3sXU892NjR3M4SbWROTwAAa+8k3dzOct2quRu9TP990ooLkPAjElQW+CDhSysuvEz/fetWzd3Y3M6y2PWflgAhCZpaWK1bedEaPzfYFq9ttECkIxJUCvik47WNlp8bbFu38qI1TS2sTgX++6Z5m9ugm1o2qXUrL2rL9na0SttREJIjTVDeMR9CsrQdle3taF238qK2ppZNanPb6es6H1jta2lh0dZG5ubVe++1nNRjxstB+7koOyhDtS9VTAorBi/Tf9+6lRetCbF7v9eNqNzbtInV5uXk37j63RuVch6XtjPNT/f5AGRUMi4Dlw9olahR2s0c8f3M3RtWztkQYvZBLx9RpW/zcvKb21luWDlnQy7d+2E/l95gVdUrUhaBORKI4wU8s0/KIquqXvm59IZcuvfDG1bO2dDcznIk4I/YAxQXikIxceujB+8Bie9YTvV0LzMANp4fHJdHUfn4bOIONgQYEpaynGp4mYHDYPPtPzww46cnYzTmBMgzL7/JhnjF996ZaseTXwXhy8pONmgvA+1mDJEwDI7IMKagk2E2QtqOkJYD3x3qAOMnbnboRxu/fnFnMS6lvPeo43egLpf7AHD7I0cbjKSvAPxZacfmEUkYLwvtZcFgAwYjqD5TpBk+2LUzgQtjBhLSikNYcTBraDe3C6BfC80/furBxo6TsSjV6Ay/LDW1/lmGH37To2/FlKq7gY33STCuAcxCYcWJSIC1D2YDE6wyRnY6UaZsEAmQVMF4eVkGxA4QtpCwfuf7Pc+sf+DSXAH41mW61Fk/dgQ4DRGCL8eqelr31fBziwB5lTHeEjY6JUjOi0oJpwGDBAzrXSRkvxDWq4DeBhXbPnCkfuvmNvKHed8zBD60/wecr8ElpbwUhAAAAABJRU5ErkJggg==">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informal groups meet more often when the tedious stuff runs itself — GroupThat</title>
+  <meta name="description" content="Most casual groups fizzle because the organizer gets tired of the chores. GroupThat automates the invites, RSVPs, reminders and headcount, so meeting becomes the default.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #4A90E2;
+      --mint:    #4FD1C5;
+      --coral:   #FF7A6E;
+      --gray-lt: #F5F7FA;
+      --charcoal:#2D3748;
+      --white:   #ffffff;
+      --gray-mid:#6B7A8D;
+      --radius:  16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    nav img { height: 52px; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-link { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; color: var(--charcoal); text-decoration: none; opacity: 0.6; transition: opacity 0.15s; white-space: nowrap; flex-shrink: 0; }
+    .nav-link:hover { opacity: 1; }
+    .nav-link.active { opacity: 1; color: var(--blue); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-cta:hover { background: var(--charcoal); transform: translateY(-1px); }
+    nav { position: relative; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 42px; height: 42px; padding: 9px; background: none; border: 0; cursor: pointer; flex-shrink: 0; }
+    .nav-toggle span { display: block; width: 100%; height: 2px; background: var(--charcoal); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── ARTICLE ── */
+    .article {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 88px;
+    }
+    .back-link {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-mid);
+      text-decoration: none;
+      margin-bottom: 28px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--blue); }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--gray-mid);
+      margin-bottom: 18px;
+    }
+    .post-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(74,144,226,0.10);
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+    .article h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 900;
+      letter-spacing: -1.2px;
+      line-height: 1.12;
+      margin-bottom: 32px;
+    }
+
+    /* Long-form typography */
+    .article-body { font-size: 18px; line-height: 1.75; color: #3a4658; }
+    .article-body > p { margin-bottom: 24px; }
+    .article-body .lead { font-size: 21px; line-height: 1.6; color: var(--charcoal); font-weight: 500; }
+    .article-body h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--charcoal);
+      margin: 44px 0 14px;
+    }
+    .article-body h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin: 32px 0 10px;
+    }
+    .article-body ul, .article-body ol { margin: 0 0 24px 26px; }
+    .article-body li { margin-bottom: 10px; }
+    .article-body a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .article-body strong { color: var(--charcoal); font-weight: 700; }
+    .article-body blockquote {
+      border-left: 3px solid var(--mint);
+      background: var(--gray-lt);
+      padding: 18px 24px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 0 0 24px;
+      font-size: 19px;
+      color: var(--charcoal);
+    }
+    .article-body hr { border: none; border-top: 1px solid #e2e8f2; margin: 44px 0; }
+
+    /* End-of-post CTA */
+    .post-cta {
+      max-width: 680px;
+      margin: 0 auto 88px;
+      padding: 36px 40px;
+      background: var(--gray-lt);
+      border: 1px solid #e2eaf5;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .post-cta h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .post-cta p { color: var(--gray-mid); margin-bottom: 22px; }
+    .btn-blue {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 13px 30px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-blue:hover { background: var(--charcoal); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid #e2e8f2;
+      padding: 32px 48px;
+      text-align: center;
+      color: var(--gray-mid);
+      font-size: 14px;
+    }
+    footer img { height: 32px; margin: 0 auto 12px; display: block; opacity: 0.55; }
+    .footer-links { margin-bottom: 8px; }
+    .footer-links a { color: var(--gray-mid); font-weight: 600; text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--blue); }
+    .footer-social {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid #e2e8f2;
+      color: var(--gray-mid);
+      margin: 0 auto 16px;
+      transition: color 0.15s, border-color 0.15s, transform 0.15s;
+    }
+    .footer-social:hover { color: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav img { height: 42px; }
+      .nav-right { gap: 12px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute; top: calc(100% + 10px); right: 20px;
+        flex-direction: column; align-items: stretch; gap: 2px;
+        background: var(--white); border-radius: 14px;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+        padding: 8px; min-width: 180px; display: none; z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-link { opacity: 1; padding: 12px 16px; border-radius: 8px; }
+      .nav-link:hover { opacity: 1; background: rgba(0,0,0,0.05); }
+      .article { padding: 40px 24px 64px; }
+      .article-body { font-size: 17px; }
+      .post-cta { margin: 0 24px 64px; padding: 30px 26px; }
+      footer { padding: 28px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+  <link rel="stylesheet" href="../assets/motion.css">
+  <script src="../assets/motion.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html"><img src="../GT%202.png" alt="GroupThat"></a>
+  <div class="nav-right">
+    <div class="nav-links" id="navMenu">
+    <a href="../index.html" class="nav-link">Home</a>
+    <a href="../pricing.html" class="nav-link">Pricing</a>
+    <a href="../faq.html" class="nav-link">FAQs</a>
+    <a href="index.html" class="nav-link active">Blog</a>
+    <a href="../contact.html" class="nav-link">Contact</a>
+    </div>
+    <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="nav-cta">Get the App</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ARTICLE -->
+<article class="article">
+  <a href="index.html" class="back-link">← All posts</a>
+
+  <div class="article-meta">
+    <span class="post-tag">Perspective</span>
+    <span>October 28, 2026</span>
+    <span>·</span>
+    <span>4 min read</span>
+  </div>
+
+  <h1>Informal groups meet more often when the tedious stuff runs itself</h1>
+
+  <div class="article-body">
+    <p class="lead">Most informal groups don&rsquo;t fizzle because people stop wanting to show up. They fizzle because one person gets tired of doing the chores that make the meetup happen.</p>
+
+    <p>Think about the last group you were part of that quietly stopped meeting. The pickup game, the supper club, the Thursday run. Nobody decided to end it. Someone just didn&rsquo;t send the text one week, then the next week felt awkward to restart, and a month later it was &ldquo;we should really get that going again.&rdquo;</p>
+
+    <p>The fix isn&rsquo;t more enthusiasm. It&rsquo;s taking the tedious work off the organizer&rsquo;s plate entirely.</p>
+
+    <h2>The invisible job behind every &ldquo;casual&rdquo; meetup</h2>
+    <p>Informal groups look effortless from the outside. Behind every one of them is someone doing the same little jobs, over and over:</p>
+    <ul>
+      <li><strong>Kicking it off.</strong> Remembering to post &ldquo;who&rsquo;s in this week?&rdquo; at the right time.</li>
+      <li><strong>Counting.</strong> Scrolling the thread to work out who said yes, who said maybe, and who reacted with a thumbs-up that could mean anything.</li>
+      <li><strong>Chasing.</strong> Nudging the people who haven&rsquo;t answered, one by one.</li>
+      <li><strong>Reminding.</strong> Reposting the time and place the day of, because the plan got buried.</li>
+      <li><strong>Making the call.</strong> Deciding whether there are enough people to go ahead, and telling everyone if there aren&rsquo;t.</li>
+    </ul>
+    <p>None of these is hard. Together, every single week, they add up to a part-time job nobody signed up for. And when the organizer is busy, sick, or traveling, the group simply doesn&rsquo;t meet.</p>
+
+    <blockquote>A group that depends on one person remembering to send a text will only ever meet as often as that person has energy to spare.</blockquote>
+
+    <h2>Automation makes &ldquo;on&rdquo; the default</h2>
+    <p>GroupThat flips the default. Instead of a meetup happening only when someone gets it started, it happens unless someone stops it.</p>
+    <p>You set the schedule once &mdash; the day, the time, the place &mdash; and GroupThat creates every meetup after that on its own. When the RSVP window opens, invites go out automatically. Members answer with one tap: I&rsquo;m In or I&rsquo;m Out. The headcount updates live as people respond, guests included, so nobody is tallying replies.</p>
+    <p>Anyone who hasn&rsquo;t answered gets a nudge in one tap instead of a dozen individual texts. And members who are sitting a week out can mute until the next meetup, so the people who are in get the logistics and everyone else gets some quiet.</p>
+    <p>That&rsquo;s the whole loop, and the organizer doesn&rsquo;t have to touch any of it. All of this is included in the free version of GroupThat.</p>
+
+    <h2>Why less friction means more meetups</h2>
+    <p>When the chores disappear, a few things change at once:</p>
+    <h3>The streak doesn&rsquo;t break</h3>
+    <p>The most fragile moment for any recurring group is the skipped week. With invites going out on schedule whether or not the organizer remembers, there&rsquo;s no gap to recover from. The rhythm holds, and rhythm is what turns an occasional hangout into a standing thing.</p>
+    <h3>Saying yes is effortless</h3>
+    <p>A single tap is a lot easier than composing a reply in a busy chat. When responding takes a second, more people respond, and a clear headcount early on makes it easier for everyone else to commit.</p>
+    <h3>The organizer doesn&rsquo;t burn out</h3>
+    <p>The person holding the group together gets to just show up and enjoy it. That&rsquo;s the difference between a group that lasts a season and one that lasts for years.</p>
+    <h3>The routine isn&rsquo;t stuck in one person&rsquo;s head</h3>
+    <p>Because the schedule, the invites, and the headcount live in the app, the group keeps its rhythm even when the organizer has a busy month.</p>
+
+    <h2>Want to automate even more?</h2>
+    <p>For organizers who want to hand off the rest, <a href="../pricing.html">GroupThat Premium</a> adds tools like an automated waitlist that fills open spots when someone drops, meetup assignments that rotate hosting and snacks, and a minimum headcount that cancels the meetup for you if not enough people are in by your deadline. But the core loop that keeps a group meeting week after week is free.</p>
+
+    <hr>
+
+    <p>Your group already wants to get together. GroupThat just makes sure the boring parts never get in the way.</p>
+  </div>
+</article>
+
+<!-- END CTA -->
+<div class="post-cta">
+  <h3>Make meeting the default.</h3>
+  <p>Set your schedule once and GroupThat handles the invites, RSVPs and reminders every week.</p>
+  <a href="https://apps.apple.com/us/app/groupthat/id6756112941" class="btn-blue">Get the App</a>
+</div>
+
+<footer>
+  <img src="../GT%202.png" alt="GroupThat">
+  <a class="footer-social" href="https://www.instagram.com/groupthatapp" target="_blank" rel="noopener" aria-label="GroupThat on Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+  <div class="footer-links"><a href="../contact.html">Contact</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></div>
+  <p>&copy; 2026 GroupThat. All rights reserved.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-toggle').forEach(function (btn) {
+    var menu = btn.parentElement.querySelector('.nav-links');
+    if (!menu) return;
+    btn.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function (e) {
+      if (!btn.parentElement.contains(e.target)) {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -15,6 +15,8 @@ automatically whenever a change is pushed here.
 | `blog/welcome.html`          | Intro post — GroupThat as a recurring meetup organizer (use as a template) |
 | `blog/vs-group-chat.html`    | Organizer-first vs. chat-first |
 | `blog/whos-in-whos-out.html` | Live headcounts, guests, and mute-until-next-meetup |
+| `blog/groups-meet-more-often.html` | Informal groups meet more often when the chores are automated |
+| `blog/auto-cancel.html`      | Minimum headcount: auto-cancel when not enough people are in by the deadline (Premium) |
 | `assets/`                    | Background videos + posters and the social-share (Open Graph) image |
 | `assets/screens/`            | App screenshots, 600×1300 (iPhone proportions), shown inside CSS iPhone frames on the homepage |
 | `assets/motion.css` / `motion.js` | Shared polish loaded by every page: sticky frosted nav and scroll-in animations |
