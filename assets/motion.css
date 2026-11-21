@@ -30,8 +30,6 @@ nav.is-scrolled::before {
   border-bottom-color: rgba(45,55,72,0.08);
   box-shadow: 0 6px 24px rgba(45,55,72,0.06);
 }
-/* The logo is a JPEG on white; multiply drops the white box on the frosted bar */
-nav img { mix-blend-mode: multiply; }
 
 /* ── Nav link underline ── */
 .nav-link { position: relative; }
