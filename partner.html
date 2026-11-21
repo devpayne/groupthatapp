@@ -547,7 +547,7 @@
     <div class="apply-intro" data-reveal>
       <span class="eyebrow">Apply</span>
       <h2>Let's grow together.</h2>
-      <p>Tell us about your business and who you want to reach. No payment now.</p>
+      <p>Tell us a bit about your business. No payment now.</p>
       <a class="apply-email" href="mailto:info@groupthatapp.com?subject=GroupThat%20Partner%20Program">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
         info@groupthatapp.com
@@ -570,25 +570,7 @@
         <label>Last name *<input name="last-name" autocomplete="family-name" required></label>
         <label>Email *<input type="email" name="email" autocomplete="email" required></label>
         <label>Phone<input type="tel" name="phone" autocomplete="tel"></label>
-        <label>Website<input type="url" name="website" placeholder="https://"></label>
-        <label>Business type *
-          <select name="business-type" required>
-            <option value="" disabled selected>Choose one</option>
-            <option>Restaurant or bar</option>
-            <option>Sports or fitness</option>
-            <option>Retail</option>
-            <option>Entertainment or venue</option>
-            <option>Brand</option>
-            <option>Other</option>
-          </select>
-        </label>
-        <label class="full">City or area you serve<input name="area"></label>
-        <label class="full">Who would you like to reach? *
-          <textarea name="message" rows="4" maxlength="600" placeholder="e.g. pickup basketball and running groups near our store" required></textarea>
-        </label>
-        <label class="full">Have an offer in mind? (optional)
-          <input name="offer" placeholder="We'll shape it together.">
-        </label>
+        <label class="full">Website<input name="website" inputmode="url" autocomplete="url" placeholder="yourbusiness.com"></label>
         <button class="btn-primary form-btn" type="submit">Submit application</button>
         <p class="form-foot">We'll follow up if it's a fit.</p>
       </div>
@@ -597,10 +579,31 @@
 </section>
 
 <script>
-  if (/[?&]sent=1/.test(location.search)) {
-    document.getElementById('formFields').hidden = true;
-    document.getElementById('formSent').hidden = false;
-  }
+  (function () {
+    var form = document.querySelector('form[name="partner"]');
+    function showSent() {
+      document.getElementById('formFields').hidden = true;
+      document.getElementById('formSent').hidden = false;
+    }
+    if (/[?&]sent=1/.test(location.search)) showSent();
+    // Submit to Netlify Forms in the background; falls back to a normal POST if this fails.
+    form.addEventListener('submit', function (e) {
+      if (!window.fetch) return;
+      e.preventDefault();
+      var btn = form.querySelector('.form-btn');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        showSent();
+      }).catch(function () {
+        form.submit();
+      });
+    });
+  })();
 </script>
 
 <footer>
