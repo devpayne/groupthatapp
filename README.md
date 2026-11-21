@@ -11,6 +11,7 @@ automatically whenever a change is pushed here.
 | `pricing.html`               | Pricing (Free vs. Premium comparison) |
 | `faq.html`                   | FAQ                                 |
 | `contact.html`                | Contact Us (info@groupthatapp.com)  |
+| `partner.html`               | Partner Program: advertise with GroupThat, with an apply form (Netlify Forms, form name `partner`) |
 | `blog/index.html`            | Blog landing page (lists all posts) |
 | `blog/welcome.html`          | Intro post — GroupThat as a recurring meetup organizer (use as a template) |
 | `blog/vs-group-chat.html`    | Organizer-first vs. chat-first |
